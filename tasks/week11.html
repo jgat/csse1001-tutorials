@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSSE1001 Recursion Tutorial</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 11 Tutorial: Recursion</h1>
+
+TODO: an easier warm-up task.
+
+<h2>Files and Folders</h2>
+
+<p>
+In a computer's file system, directories (i.e. folders) can contain files, as
+well as other directories. For this task, <b>write a function
+<tt>list_files</tt></b> which takes the name of a directory as input, and
+returns a list of all filenames that can be accessed from that directory (i.e.
+all the files in that directory, and its sub-directories, and its
+sub-sub-directories, and so on).
+</p>
+
+<p>An example of using this function follows (obviously, the output will
+depend on what's in the directory you use as input; this is a fabricated
+example).</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> list_files(<span class="string">'H:/csse1001/'</span>)
+[<span class="string">'H:/csse1001/assign1.py'</span>,
+[<span class="string">'H:/csse1001/assign1soln.py'</span>,
+ <span class="string">'H:/csse1001/assign2.py'</span>,
+ <span class="string">'H:/csse1001/recursion_tute.py'</span>,
+ <span class="string">'H:/csse1001/lectures/recursion.py'</span>,
+ <span class="string">'H:/csse1001/lectures/notes/add.py'</span>,
+ <span class="string">'H:/csse1001/lectures/notes/search_tree.py'</span>,
+ <span class="string">'H:/csse1001/tutorials/week2.py'</span>,
+ <span class="string">'H:/csse1001/tutorials/week3.py'</span>,
+ <span class="string">'H:/csse1001/mypytutor/MyPyTutor.py'</span>,
+ <span class="string">'H:/csse1001/mypytutor/MyPyTutor.pyw'</span>,
+ <span class="string">'H:/csse1001/mypytutor/CSSE1001Answers/Introduction.py'</span>]
+</pre>
+
+<p>
+To interact with files and folders, Python provides a library called
+<tt>os</tt>. The functions <tt>os.listdir</tt>, <tt>os.path.join</tt>, and
+<tt>os.path.isfile</tt>/<tt>os.path.isdir</tt> may be useful; see their
+<tt><span class="builtin">help</span></tt> documentation, and the following
+examples.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">import</span> os
+<span class="prompt">&gt;&gt;&gt;</span> directory = os.getcwd()   <span class="comment"># Gets the name of the directory this file is in.</span>
+<span class="prompt">&gt;&gt;&gt;</span> directory
+<span class="string">'H:/csse1001'</span>
+<span class="prompt">&gt;&gt;&gt;</span> os.listdir(directory)
+[<span class="string">'assign1.py'</span>, <span class="string">'assign1soln.py'</span>, <span class="string">'assign2.py'</span>, <span class="string">'recursion_tute.py'</span>, <span class="string">'lectures'</span>, <span class="string">'tutorials'</span>, <span class="string">'mypytutor'</span>]
+<span class="prompt">&gt;&gt;&gt;</span> os.path.join(directory, <span class="string">'assign1.py'</span>)
+<span class="string">'H:/csse1001/assign1.py'</span>
+<span class="prompt">&gt;&gt;&gt;</span> os.path.isdir(<span class="string">'H:/csse1001/assign1.py'</span>)
+<span class="builtin">False</span>
+<span class="prompt">&gt;&gt;&gt;</span> os.path.isfile(<span class="string">'H:/csse1001/assign1.py'</span>)
+<span class="builtin">True</span>
+<span class="prompt">&gt;&gt;&gt;</span> os.path.isdir(<span class="string">'H:/csse1001/lectures'</span>)
+<span class="builtin">True</span>
+<span class="prompt">&gt;&gt;&gt;</span> os.path.isfile(<span class="string">'H:/csse1001/lectures'</span>)
+<span class="builtin">False</span>
+</pre>
+
+
+
+</html>
