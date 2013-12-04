@@ -7,16 +7,41 @@
 <body>
 <h1>Week 11 Tutorial: Recursion</h1>
 
-TODO: an easier warm-up task.
+<h2>List Sorting</h2>
+
+<p>
+Sorting a list of data is a common task in many applications of computing.
+There are many different methods (or <i>algorithms</i>) for sorting data, one
+such method, called <i>insertion sort</i> is as follows: first find the
+smallest element, 'remove' it from the list, then sort the remaining elements,
+and insert the smallest element back in front of the list.
+</p>
+
+<p>
+Write a recursive function <tt>sort</tt> which takes a list, and returns a
+sorted version of the list using this method.
+It may help to use the <span class="builtin">min</span> function and
+<tt>list.index</tt> method, as well as list slicing.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> nums = [5, 2, 4, 1, 3]
+<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">min</span>(nums)
+1
+<span class="prompt">&gt;&gt;&gt;</span> nums.index(1)
+3
+<span class="prompt">&gt;&gt;&gt;</span> nums[:3] + nums[4:]
+[5, 2, 4, 3]
+</pre>
 
 <h2>Files and Folders</h2>
 
 <p>
 In a computer's file system, directories (i.e. folders) can contain files, as
-well as other directories. For this task, <b>write a function
-<tt>list_files</tt></b> which takes the name of a directory as input, and
-returns a list of all filenames that can be accessed from that directory (i.e.
-all the files in that directory, and its sub-directories, and its
+well as other directories. For this task, write a function
+<tt>list_files</tt> which takes the name of a directory as input, and
+returns a list of all filenames that can be accessed from that directory</b>
+(i.e. all the files in that directory, and its sub-directories, and its
 sub-sub-directories, and so on).
 </p>
 
@@ -27,14 +52,14 @@ example).</p>
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span> list_files(<span class="string">'H:/csse1001/'</span>)
 [<span class="string">'H:/csse1001/assign1.py'</span>,
-[<span class="string">'H:/csse1001/assign1soln.py'</span>,
+ <span class="string">'H:/csse1001/assign1soln.py'</span>,
  <span class="string">'H:/csse1001/assign2.py'</span>,
- <span class="string">'H:/csse1001/recursion_tute.py'</span>,
  <span class="string">'H:/csse1001/lectures/recursion.py'</span>,
  <span class="string">'H:/csse1001/lectures/notes/add.py'</span>,
  <span class="string">'H:/csse1001/lectures/notes/search_tree.py'</span>,
  <span class="string">'H:/csse1001/tutorials/week2.py'</span>,
  <span class="string">'H:/csse1001/tutorials/week3.py'</span>,
+ <span class="string">'H:/csse1001/tutorials/week11.py'</span>,
  <span class="string">'H:/csse1001/mypytutor/MyPyTutor.py'</span>,
  <span class="string">'H:/csse1001/mypytutor/MyPyTutor.pyw'</span>,
  <span class="string">'H:/csse1001/mypytutor/CSSE1001Answers/Introduction.py'</span>]
@@ -43,30 +68,45 @@ example).</p>
 <p>
 To interact with files and folders, Python provides a library called
 <tt>os</tt>. The functions <tt>os.listdir</tt>, <tt>os.path.join</tt>, and
-<tt>os.path.isfile</tt>/<tt>os.path.isdir</tt> may be useful; see their
+<tt>os.path.isdir</tt> may be useful; see their
 <tt><span class="builtin">help</span></tt> documentation, and the following
 examples.
 </p>
 
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">import</span> os
-<span class="prompt">&gt;&gt;&gt;</span> directory = os.getcwd()   <span class="comment"># Gets the name of the directory this file is in.</span>
+<span class="prompt">&gt;&gt;&gt;</span> directory = os.getcwd()   <span class="comment"># Get the name of the directory we are working in.</span>
 <span class="prompt">&gt;&gt;&gt;</span> directory
 <span class="string">'H:/csse1001'</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.listdir(directory)
-[<span class="string">'assign1.py'</span>, <span class="string">'assign1soln.py'</span>, <span class="string">'assign2.py'</span>, <span class="string">'recursion_tute.py'</span>, <span class="string">'lectures'</span>, <span class="string">'tutorials'</span>, <span class="string">'mypytutor'</span>]
+[<span class="string">'assign1.py'</span>, <span class="string">'assign1soln.py'</span>, <span class="string">'assign2.py'</span>, <span class="string">'lectures'</span>, <span class="string">'tutorials'</span>, <span class="string">'mypytutor'</span>]
 <span class="prompt">&gt;&gt;&gt;</span> os.path.join(directory, <span class="string">'assign1.py'</span>)
 <span class="string">'H:/csse1001/assign1.py'</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.path.isdir(<span class="string">'H:/csse1001/assign1.py'</span>)
 <span class="builtin">False</span>
-<span class="prompt">&gt;&gt;&gt;</span> os.path.isfile(<span class="string">'H:/csse1001/assign1.py'</span>)
-<span class="builtin">True</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.path.isdir(<span class="string">'H:/csse1001/lectures'</span>)
 <span class="builtin">True</span>
-<span class="prompt">&gt;&gt;&gt;</span> os.path.isfile(<span class="string">'H:/csse1001/lectures'</span>)
-<span class="builtin">False</span>
 </pre>
 
+<p>
+It may help to use the <tt>list.extend</tt> method; if <tt>a</tt> and
+<tt>b</tt> are lists, <tt>a.extend(b)</tt> will append every element from
+<tt>b</tt> into <tt>a</tt>:
+</p>
 
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> a = [1, 2]
+<span class="prompt">&gt;&gt;&gt;</span> b = [3, 4]
+<span class="prompt">&gt;&gt;&gt;</span> a.extend(b)
+<span class="prompt">&gt;&gt;&gt;</span> a
+[1, 2, 3, 4]
+</pre>
+
+<h2>Past Exam Practice</h2>
+
+<p>
+Attempt some of the past exam questions, accessible from the UQ Library
+website. The tutors will sugggest questions to attempt.
+</p>
 
 </html>

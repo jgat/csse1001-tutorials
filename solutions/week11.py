@@ -1,3 +1,10 @@
+def sort(xs):
+    if not xs:
+        return xs
+    m = min(xs)
+    i = xs.index(m)
+    return [m] + sort(xs[:i] + xs[i+1:])
+
 import os
 
 def list_files(directory):
