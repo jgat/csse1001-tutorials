@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Introduction to Software Design Tutorial</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 2 Tutorial: Introduction to Software Design</h1>
+
+<div class="important">
+<b>About Tutorials</b>
+
+<p>
+TODO: Insert spiel on what tutorials are about.
+</p>
+</div>
+
+<h2>Hello, World!</h2>
+
+<p>
+The purpose of this task is to become familiar with writing, saving, and
+running programs from IDLE. Write a program which, when run, displays the text
+<tt><span class="result">Hello, World!</span></tt>. Then, close IDLE, and
+navigate the filesystem (in Windows Explorer or equivalent) to find the program
+you just wrote, open it in IDLE, and run it.
+</p>
+
+<p>
+Then, modify the program to first ask the user what their name is
+(using <tt><span class="builtin">raw_input</span></tt>), and then display
+a greeting using their name. For example (the blue text is
+output from the program, the black text is input from the user):
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> ================================ RESTART ================================
+<span class="prompt">&gt;&gt;&gt;</span>
+<span class="result">What is your name? </span>Sir Lancelot of Camelot
+<span class="result">Hello, Sir Lancelot of Camelot!</span>
+<span class="prompt">&gt;&gt;&gt;</span>
+</pre>
+
+<div class="extra">
+<b>Hint:</b>
+
+<ul>
+<li>Create a Python source code file by selecting "New" from the File menu in
+IDLE, or using the Ctrl-N shortcut.</li>
+<li>Save the file in a location where you will be able to find it. On the lab
+machines, the <tt>H:</tt> drive is your personal network drive, which can be
+accessed from any EAIT machine. Files saved to the <tt>C:</tt> drive might not
+be accessible after logging off.</li>
+<li>By default, IDLE will not add a file extension to your files. You must
+manually add <tt>.py</tt> to the end of the filename in order to keep the
+syntax highlighting.</li>
+</ul>
+</div>
+
+<h2>Alice's Addition Academy</h2>
+
+<p>
+Your 5-year old cousin Alice is learning addition, and you have decided to
+write a program she can use to practice with. The program will generate two
+random 2-digit integers, and ask the user what the sum of the two integers is,
+and display whether or not the user is correct. If the user is incorrect, also
+display the correct answer.
+</p>
+
+<p>
+Some example interactions with the program is as follows:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> ================================ RESTART ================================
+<span class="prompt">&gt;&gt;&gt;</span>
+<span class="result">70 + 17 = </span>87
+<span class="result">Correct!</span>
+<span class="prompt">&gt;&gt;&gt;</span> ================================ RESTART ================================
+<span class="prompt">&gt;&gt;&gt;</span>
+<span class="result">99 + 56 = </span>156
+<span class="result">No, the correct answer is 155</span>
+<span class="prompt">&gt;&gt;&gt;</span>
+</pre>
+
+<div class="extra">
+<b>Hint:</b>
+<p>
+To generate random integers, first put <tt><span class="keyword">import</span>
+random</tt> at the top of the file, then use <tt>random.randint(10, 99)</tt> to
+generate a random 2-digit integer.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">import</span> random
+<span class="prompt">&gt;&gt;&gt;</span> x = random.randint(10, 99)
+<span class="prompt">&gt;&gt;&gt;</span> x
+<span class="result">12</span>
+</pre>
+
+<p>
+You can also type <tt><span class="prompt">&gt;&gt;&gt;</span>
+<span class="builtin">help</span>(random.randint)</tt> at the prompt to get
+more information. Type <tt><span class="builtin">help</span>(random)</tt>
+or <tt><span class="builtin">dir</span>(random)</tt> to find more functions in
+the random module, or find
+<a href="http://docs.python.org/2/library/random.html">online documentation</a>.
+</p>
+</div>
+
+TODO: more tasks.
+
+</html>
