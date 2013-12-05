@@ -20,6 +20,11 @@ and insert the smallest element back in front of the list.
 <p>
 Write a recursive function <tt>sort</tt> which takes a list, and returns a
 sorted version of the list using this method.
+</p>
+
+<div class="extra">
+<b>Hint:</b>
+<p>
 It may help to use the <tt><span class="builtin">min</span></tt> function and
 <tt>list.index</tt> method, as well as list slicing.
 </p>
@@ -27,12 +32,15 @@ It may help to use the <tt><span class="builtin">min</span></tt> function and
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span> nums = [5, 2, 4, 1, 3]
 <span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">min</span>(nums)
-1
+<span class="result">1</span>
 <span class="prompt">&gt;&gt;&gt;</span> nums.index(1)
-3
+<span class="result">3</span>
+<span class="prompt">&gt;&gt;&gt;</span> nums[3] == 1
+<span class="result">True</span>
 <span class="prompt">&gt;&gt;&gt;</span> nums[:3] + nums[4:]
-[5, 2, 4, 3]
+<span class="result">[5, 2, 4, 3]</span>
 </pre>
+</div>
 
 <h2>Files and Folders</h2>
 
@@ -51,19 +59,22 @@ example).</p>
 
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span> list_files(<span class="string">'H:/csse1001/'</span>)
-[<span class="string">'H:/csse1001/assign1.py'</span>,
- <span class="string">'H:/csse1001/assign1soln.py'</span>,
- <span class="string">'H:/csse1001/assign2.py'</span>,
- <span class="string">'H:/csse1001/lectures/recursion.py'</span>,
- <span class="string">'H:/csse1001/lectures/notes/add.py'</span>,
- <span class="string">'H:/csse1001/lectures/notes/search_tree.py'</span>,
- <span class="string">'H:/csse1001/tutorials/week2.py'</span>,
- <span class="string">'H:/csse1001/tutorials/week3.py'</span>,
- <span class="string">'H:/csse1001/tutorials/week11.py'</span>,
- <span class="string">'H:/csse1001/mypytutor/MyPyTutor.py'</span>,
- <span class="string">'H:/csse1001/mypytutor/MyPyTutor.pyw'</span>,
- <span class="string">'H:/csse1001/mypytutor/CSSE1001Answers/Introduction.py'</span>]
+<span class="result">['H:/csse1001/assign1.py',
+ 'H:/csse1001/assign1soln.py',
+ 'H:/csse1001/assign2.py',
+ 'H:/csse1001/lectures/recursion.py',
+ 'H:/csse1001/lectures/notes/add.py',
+ 'H:/csse1001/lectures/notes/search_tree.py',
+ 'H:/csse1001/tutorials/week2.py',
+ 'H:/csse1001/tutorials/week3.py',
+ 'H:/csse1001/tutorials/week11.py',
+ 'H:/csse1001/mypytutor/MyPyTutor.py',
+ 'H:/csse1001/mypytutor/MyPyTutor.pyw',
+ 'H:/csse1001/mypytutor/CSSE1001Answers/Introduction.py']</span>
 </pre>
+
+<div class="extra">
+<b>Hint:</b>
 
 <p>
 To interact with files and folders, Python provides a library called
@@ -77,15 +88,15 @@ examples.
 <span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">import</span> os
 <span class="prompt">&gt;&gt;&gt;</span> directory = os.getcwd()   <span class="comment"># Get the name of the directory we are working in.</span>
 <span class="prompt">&gt;&gt;&gt;</span> directory
-<span class="string">'H:/csse1001'</span>
+<span class="result">'H:/csse1001'</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.listdir(directory)
-[<span class="string">'assign1.py'</span>, <span class="string">'assign1soln.py'</span>, <span class="string">'assign2.py'</span>, <span class="string">'lectures'</span>, <span class="string">'tutorials'</span>, <span class="string">'mypytutor'</span>]
+<span class="result">['assign1.py', 'assign1soln.py', 'assign2.py', 'lectures', 'tutorials', 'mypytutor']</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.path.join(directory, <span class="string">'assign1.py'</span>)
-<span class="string">'H:/csse1001/assign1.py'</span>
+<span class="result">'H:/csse1001/assign1.py'</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.path.isdir(<span class="string">'H:/csse1001/assign1.py'</span>)
-<span class="builtin">False</span>
+<span class="result">False</span>
 <span class="prompt">&gt;&gt;&gt;</span> os.path.isdir(<span class="string">'H:/csse1001/lectures'</span>)
-<span class="builtin">True</span>
+<span class="result">True</span>
 </pre>
 
 <p>
@@ -99,8 +110,9 @@ It may help to use the <tt>list.extend</tt> method; if <tt>a</tt> and
 <span class="prompt">&gt;&gt;&gt;</span> b = [3, 4]
 <span class="prompt">&gt;&gt;&gt;</span> a.extend(b)
 <span class="prompt">&gt;&gt;&gt;</span> a
-[1, 2, 3, 4]
+<span class="result">[1, 2, 3, 4]</span>
 </pre>
+</div>
 
 <h2>Past Exam Practice</h2>
 

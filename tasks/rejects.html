@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>CSSE1001 Tutorial</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Reject Tasks</h1>
+
+<i>Tasks which have been written up and then thrown out in favour of other tasks</i>
+
+<h2>Week 11 (Recursion): Alphabetic Words</h2>
+
+<p>
+This task is to determine how two words should compare in an alphabetic
+ordering, without distinguishing between lowercase and uppercase. Specifically,
+write a function <tt>compare(a, b)</tt> which takes two strings, and returns
+<tt>-1</tt> if <tt>a</tt> occurs before <tt>b</tt>
+in alphabetic order, <tt>1</tt> if <tt>b</tt> occurs before <tt>a</tt>, and
+<tt>0</tt> if they are the same word (up to capitalisation). The alphabetic
+ordering of two words is defined as follows:
+</p>
+
+<ul>
+<li>If both strings are empty, then they are the same.</li>
+<li>If just one of the strings is empty, then it occurs before the other.</li>
+<li>If the first letter of each word is different, then the ordering of those
+letters determines the ordering of the words.</li>
+<li>If the first letter of each word is the same, then compare the remaining
+words after removing the first letter from each.</li>
+</ul>
+
+<p>
+For example:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> compare(<span class="string">'coconut'</span>, <span class="string">'Cocoon'</span>)
+-1
+<span class="prompt">&gt;&gt;&gt;</span> compare(<span class="string">'swordfish'</span>, <span class="string">'sword'</span>)
+1
+<span class="prompt">&gt;&gt;&gt;</span> compare(<span class="string">'AppLE'</span>, <span class="string">'aPple'</span>)
+0
+</pre>
+
+<p>
+It is safe to assume that both inputs contain only letters.
+</p>
+
+
+<h2>Week 2/3 (Intro): Tax Time</h2>
+
+<p>
+The Australian Tax Office applies the following income tax rates based on annual
+income:
+</p>
+
+<div class="table">
+<table>
+<thead>
+<tr><th>Taxable income</th><th>Tax on this income</th></tr>
+</thead>
+<tbody>
+<tr><td>0 - $6,000</td><td>Nil</td></tr>
+<tr><td>$6,001 - $37,000</td><td>15c for each $1 over $6000</td></tr>
+<tr><td>$37,001 - $80,000</td><td>$4,650 plus 30c for each $1 over $37,000</td></tr>
+<tr><td>$80,001 - $180,000</td><td>$17,550 plus 37c for each $1 over $80,000</td></tr>
+<tr><td>$180,001 and over</td><td>$54,550 plus 45c for each $1 over $180,000</td></tr>
+</tbody>
+</table>
+(source: ATO)
+</div>
+
+<p>
+Write a function <tt>calculate_tax</tt> which takes an integer representing
+the taxable income of a person, and returns the amount of tax to pay (both in
+dollars).
+</p>
