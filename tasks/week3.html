@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Introduction to Software Design Tutorial 2</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 3 Tutorial: Introduction to Software Design 2</h1>
+
+<h2>Turtle Logic</h2>
+
+<p>
+In this task, we will use the <tt>turtle</tt> graphics module for drawing
+basic shapes. Create a source file with the line
+<tt><span class="keyword">import</span> turtle</tt>. The turtle module contains
+many functions, we will use the following:
+</p>
+
+<ul>
+<li><tt>turtle.forward(distance)</tt> moves the turtle forward by a given distance.</li>
+<li><tt>turtle.back(distance)</tt> moves the turtle backwards.</li>
+<li><tt>turtle.left(angle)</tt> turns the turtle left by <tt>angle</tt> degrees.</li>
+<li><tt>turtle.right(angle)</tt> turns the turtle right.</li>
+<li><tt>turtle.reset()</tt> removes all drawings and moves the turtle back to its
+original position and orientation.</li>
+<li><tt>turtle.exitonclick()</tt> sets the window to close when clicked.</li>
+<li><tt>turtle.bye()</tt> closes the window. Clicking the close icon on the
+window may not work.</li>
+</ul>
+
+<p>
+For example, the following code produces the image below.
+</p>
+
+<pre>
+turtle.forward(100)
+turtle.left(120)
+turtle.forward(80)
+turtle.right(90)
+turtle.forward(80)
+</pre>
+
+<center><img src="img/turtle_example.png" alt="" /></center>
+
+<p>
+Write the following functions:
+</p>
+
+<ol>
+<li><tt>rectangle(a, b)</tt>, which draws a rectangle with the given side
+lengths. Ensure that the cursor finishes pointing east.
+<center><img src="img/turtle_rectangle.png" alt="" /></center>
+</li>
+<li><tt>rotated_rectangle(a, b, angle)</tt>, which draws a rectangle rotated
+anticlockwise by the given angle. Ensure that the cursor finishes pointing east.
+<center><img src="img/turtle_rotated_rectangle.png" alt="" /></center>
+</li>
+<li><tt>polygon(size, n)</tt>, which draws a regular polygon with <tt>n</tt>
+sides, and side length <tt>size * math.sin(math.pi / n)</tt>.
+(Hint: if the turtle moves anti-clockwise, it will turn a total of 360&deg;, in
+<tt>n</tt> equal movements.)
+<center><img src="img/turtle_polygon.png" alt="" /></center>
+</li>
+<li><tt>spiral(n)</tt>, which draws a square spiral with <tt>n</tt> lines.
+(Hint: the lines in the spiral have lengths 10, 10, 20, 20, 30, 30, &hellip;)
+<center><img src="img/turtle_spiral.png" alt="" /></center>
+</li>
+</ol>
