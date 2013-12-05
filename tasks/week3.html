@@ -11,9 +11,10 @@
 
 <p>
 In this task, we will use the <tt>turtle</tt> graphics module for drawing
-basic shapes. Create a source file with the line
-<tt><span class="keyword">import</span> turtle</tt>. The turtle module contains
-many functions, we will use the following:
+basic shapes, by moving a 'turtle' across the screen, drawing a path as it
+travels. Create a source file with
+the line <tt><span class="keyword">import</span> turtle</tt>. The turtle module
+contains many functions, we will use the following:
 </p>
 
 <ul>
@@ -21,6 +22,8 @@ many functions, we will use the following:
 <li><tt>turtle.back(distance)</tt> moves the turtle backwards.</li>
 <li><tt>turtle.left(angle)</tt> turns the turtle left by <tt>angle</tt> degrees.</li>
 <li><tt>turtle.right(angle)</tt> turns the turtle right.</li>
+<li><tt>turtle.setheading(angle)</tt> sets the turtle's direction in degrees
+(0 is east, 90 is north, 180 is west, 270 is south).</li>
 <li><tt>turtle.reset()</tt> removes all drawings and moves the turtle back to its
 original position and orientation.</li>
 <li><tt>turtle.exitonclick()</tt> sets the window to close when clicked.</li>
@@ -29,6 +32,7 @@ window may not work.</li>
 </ul>
 
 <p>
+The turtle begins facing 'east' (i.e. to the right).
 For example, the following code produces the image below.
 </p>
 
@@ -62,7 +66,15 @@ sides, and side length <tt>size * math.sin(math.pi / n)</tt>.
 <center><img src="img/turtle_polygon.png" alt="" /></center>
 </li>
 <li><tt>spiral(n)</tt>, which draws a square spiral with <tt>n</tt> lines.
-(Hint: the lines in the spiral have lengths 10, 10, 20, 20, 30, 30, &hellip;)
+(Hint: the lines in the spiral have lengths 20, 20, 40, 40, 60, 60, &hellip;)
 <center><img src="img/turtle_spiral.png" alt="" /></center>
+</li>
+<li><tt>interact()</tt>, which first asks the user for a distance, then
+repeatedly asks for a direction to move, from the options
+<tt>n</tt>/<tt>s</tt>/<tt>e</tt>/<tt>w</tt> (north/south/east/west
+respectively), and then moves in that direction by the given distance. If the
+user enters <tt>q</tt>, the turtle window closes and the function ends. If the
+user enters any other input, an error message is printed, as in the example.
+<center><img src="img/turtle_interact.png" alt="" /></center>
 </li>
 </ol>

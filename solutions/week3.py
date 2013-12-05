@@ -25,9 +25,29 @@ def polygon(size, n):
         i += 1
 
 def spiral(sides):
-    turtle.reset()
     i = 0
     while i < sides:
         turtle.forward(20 * (i / 2 + 1))
         turtle.left(90)
         i += 1
+
+def interact():
+    turtle.reset()
+    distance = int(raw_input("Distance: "))
+    while True:
+        cmd = raw_input("Direction: ")
+        if cmd == 'e':
+            turtle.setheading(0)
+        elif cmd == 'n':
+            turtle.setheading(90)
+        elif cmd == 'w':
+            turtle.setheading(180)
+        elif cmd == 's':
+            turtle.setheading(270)
+        elif cmd == 'q':
+            turtle.bye()
+            break
+        else:
+            print "That's not a direction"
+            continue
+        turtle.forward(distance)
