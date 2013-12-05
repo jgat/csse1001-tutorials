@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Abstract Data Types Tutorial</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 4 Tutorial: Abstract Data Types</h1>
+
+<h2>DNA Manipulation</h2>
+
+<p>
+In molecular biology, a DNA sequence can be represented by a string made up of
+the characters <tt>A</tt>, <tt>T</tt>, <tt>G</tt> and <tt>C</tt>. The length of
+a DNA sequence must also be a multiple of three.
+</p>
+
+<ol>
+<li>
+<p>
+Write a function <tt>is_dna(string)</tt> which returns
+<tt><span class="builtin">True</span></tt> if the
+input is a valid DNA sequence and <tt><span class="builtin">False</span></tt>
+otherwise.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> is_dna(<span class="string">"AATGAC"</span>)
+<span class="result">True</span>
+<span class="prompt">&gt;&gt;&gt;</span> is_dna(<span class="string">"aCTACT"</span>)
+<span class="result">False</span>
+<span class="prompt">&gt;&gt;&gt;</span> is_dna(<span class="string">"AATC"</span>)
+<span class="result">False</span>
+</pre>
+</li>
+<li>
+<p>
+The <i>reverse complement</i> of a DNA sequence is computed by interchanging
+<tt>A</tt> with <tt>T</tt>, and <tt>G</tt> with <tt>C</tt>, and reversing the
+string. For example, the reverse complement of <tt>AATGAC</tt> is <tt>GTCATT</tt>.
+Write a function <tt>reverse_complement(dna)</tt> which returns the reverse
+complement of the sequence <tt>dna</tt>. If the sequence is invalid, return
+<tt><span class="builtin">None</span></tt>.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> reverse_complement(<span class="string">"AATGAC"</span>)
+<span class="result">'GTCATT'</span>
+<span class="prompt">&gt;&gt;&gt;</span> reverse_complement(<span class="string">"GATTACAAA"</span>)
+<span class="result">'TTTGTAATC'</span>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">print</span> reverse_complement(<span class="string">"GAGA"</span>)
+<span class="result">None</span>
+</pre>
+</li>
+<li>
+<p>
+A DNA sequence is divided up into blocks
+of three letters, called <i>codons</i>. For example, the sequence
+<tt>GATTACAAA</tt> contains three codons: <tt>GAT</tt>, <tt>TAC</tt> and
+<tt>AAA</tt>. Write a function <tt>print_codons(dna)</tt> which one-by-one
+prints each of the codons of the sequence <tt>dna</tt>. If the sequence is
+invalid, do nothing.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> print_codons(<span class="string">"GATTACAAA"</span>)
+<span class="result">GAT</span>
+<span class="result">TAC</span>
+<span class="result">AAA</span>
+<span class="prompt">&gt;&gt;&gt;</span> print_codons(<span class="string">"AATGAC"</span>)
+<span class="result">AAT</span>
+<span class="result">GAC</span>
+<span class="prompt">&gt;&gt;&gt;</span> print_codons(<span class="string">"GAGA"</span>)
+<span class="prompt">&gt;&gt;&gt;</span>
+</pre>
+</li>
+</ol>
+
+<div class="aside">
+<b>Aside: Dealing with Errors</b>
+
+<p>If we encounter a string which is not an invalid DNA sequence, the optimal
+situation would be not to 'ignore' the invalid data by doing nothing, instead
+we should cause an error to occur, by raising an exception:</p>
+
+<pre>
+...
+<span class="keyword">if</span> ...:
+    <span class="keyword">raise</span> <span class="builtin">ValueError</span>(<span class="string">"Invalid DNA sequence"</span>)
+...
+</pre>
+
+<p>We will discuss this more later in the course.</p>
+</div>
+
+<h2>Number Extraction</h2>
+
+<p>
+Data mining is the process of discovering and analysing information from raw
+datasets. Often, most of the data is not relevant, and so the first task in
+data mining is to extract only the useful information.
+In this task, we are given a string which contains numbers, and we want to
+extract the first integer out of the string.
+</p>
+
+<p>
+Write a function <tt>get_number(string)</tt> which returns the first positive
+integer in the string, or <tt><span class="builtin">None</span></tt> if there
+are no integers in the string.
+You may find it useful to use the <tt>str.isdigit</tt> method.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> get_number(<span class="string">"zbagl22.17clguba19"</span>)
+<span class="result">22</span>
+<span class="prompt">&gt;&gt;&gt;</span> get_number(<span class="string">"ubyl 014tenvy,1975 ncevy9gu"</span>)
+<span class="result">14</span>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">print</span> get_number(<span class="string">"sylvatpvephf"</span>)
+<span class="result">None</span>
+</pre>
+
+<div class="extra">
+<b>Extension:</b>
+
+<p>
+Modify this function to also handle negative integers.
+</p>
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> get_number(<span class="string">"zl-39u0irepensg"</span>)
+<span class="result">-39</span>
+<span class="prompt">&gt;&gt;&gt;</span> get_number(<span class="string">"vf-shyy23-4bs"</span>)
+<span class="result">23</span>
+<span class="prompt">&gt;&gt;&gt;</span> get_number(<span class="string">"33yf-"</span>)
+<span class="result">33</span>
+</pre>
+</div>

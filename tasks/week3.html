@@ -60,9 +60,10 @@ anticlockwise by the given angle. Ensure that the cursor finishes pointing east.
 <center><img src="img/turtle_rotated_rectangle.png" alt="" /></center>
 </li>
 <li><tt>polygon(size, n)</tt>, which draws a regular polygon with <tt>n</tt>
-sides, and side length <tt>size * math.sin(math.pi / n)</tt>.
+sides, and side length <img src="img/size_eqn.png" alt="size * sin(pi / n)" />.
 (Hint: if the turtle moves anti-clockwise, it will turn a total of 360&deg;, in
-<tt>n</tt> equal movements.)
+<tt>n</tt> equal movements. The <tt>math</tt> module contains trigonometric
+functions and mathematical constants.)
 <center><img src="img/turtle_polygon.png" alt="" /></center>
 </li>
 <li><tt>spiral(n)</tt>, which draws a square spiral with <tt>n</tt> lines.
