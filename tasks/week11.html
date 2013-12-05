@@ -46,7 +46,13 @@ It may help to use the <tt><span class="builtin">min</span></tt> function and
 
 <p>
 In a computer's file system, directories (i.e. folders) can contain files, as
-well as other directories. For this task, write a function
+well as other directories. This self-similarity (directories contain other
+directories) suggests that we should use recursive functions to traverse the
+file system.
+</p>
+
+<p>
+For this task, write a function
 <tt>list_files</tt> which takes the name of a directory as input, and
 returns a list of all filenames that can be accessed from that directory</b>
 (i.e. all the files in that directory, and its sub-directories, and its
