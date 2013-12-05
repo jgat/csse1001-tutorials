@@ -10,6 +10,37 @@
 <i>Tasks which have been written up and then thrown out in favour of other tasks.
 Throwing them in here in case they end up being useful later.</i>
 
+<h2>Week 2/3 (Intro): Tax Time</h2>
+
+<i>Comment: Didn't have any room to put this task in week 2 or 3, but it's
+still a good task.</i>
+
+<p>
+The Australian Tax Office applies the following income tax rates based on annual
+income:
+</p>
+
+<div class="table">
+<table>
+<thead>
+<tr><th>Taxable income</th><th>Tax on this income</th></tr>
+</thead>
+<tbody>
+<tr><td>0 - $6,000</td><td>Nil</td></tr>
+<tr><td>$6,001 - $37,000</td><td>15c for each $1 over $6000</td></tr>
+<tr><td>$37,001 - $80,000</td><td>$4,650 plus 30c for each $1 over $37,000</td></tr>
+<tr><td>$80,001 - $180,000</td><td>$17,550 plus 37c for each $1 over $80,000</td></tr>
+<tr><td>$180,001 and over</td><td>$54,550 plus 45c for each $1 over $180,000</td></tr>
+</tbody>
+</table>
+</div>
+
+<p>
+Write a function <tt>calculate_tax</tt> which takes an integer representing
+the taxable income of a person, and returns the amount of tax to pay (both in
+dollars).
+</p>
+
 <h2>Week 11 (Recursion): Alphabetic Words</h2>
 
 <i>Comment: This task was originally going to be a warm-up towards the
@@ -51,34 +82,14 @@ For example:
 It is safe to assume that both inputs contain only letters.
 </p>
 
+<h2>Recursion: Minimums</h2>
 
-<h2>Week 2/3 (Intro): Tax Time</h2>
-
-<i>Comment: Didn't have any room to put this task in week 2 or 3, but it's
-still a good task.</i>
+<i>Comment: An easier warm-up task.</i>
 
 <p>
-The Australian Tax Office applies the following income tax rates based on annual
-income:
+Write a recursive function which takes a list of numbers, and returns the
+smallest element in the list, without using the builtin
+<tt><span class="builtin">min</span></tt> function. If the list is empty, raise
+a <tt><span class="builtin">ValueError</span></tt>.
 </p>
 
-<div class="table">
-<table>
-<thead>
-<tr><th>Taxable income</th><th>Tax on this income</th></tr>
-</thead>
-<tbody>
-<tr><td>0 - $6,000</td><td>Nil</td></tr>
-<tr><td>$6,001 - $37,000</td><td>15c for each $1 over $6000</td></tr>
-<tr><td>$37,001 - $80,000</td><td>$4,650 plus 30c for each $1 over $37,000</td></tr>
-<tr><td>$80,001 - $180,000</td><td>$17,550 plus 37c for each $1 over $80,000</td></tr>
-<tr><td>$180,001 and over</td><td>$54,550 plus 45c for each $1 over $180,000</td></tr>
-</tbody>
-</table>
-</div>
-
-<p>
-Write a function <tt>calculate_tax</tt> which takes an integer representing
-the taxable income of a person, and returns the amount of tax to pay (both in
-dollars).
-</p>
