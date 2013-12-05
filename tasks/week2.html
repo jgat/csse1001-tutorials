@@ -11,7 +11,25 @@
 <b>About Tutorials</b>
 
 <p>
-TODO: Insert spiel on what tutorials are about.
+The aim of the CSSE1001 tutorial (T) sessions is to give additional
+practice at writing computer programs. The tasks are designed to be completed
+by a group of two or three students working together, so it is strongly
+recommended that you sit with other students, and use a lab machine instead of
+a laptop.
+</p>
+
+<p>
+Tutors are present at the session to provide assistance and insight into the
+tasks, so ask them questions when you get stuck. Note that tutors will not
+provide assistance for the assignment tasks in the T sessions; for that,
+you should attend any of the timetabled P sessions.
+</p>
+
+<p>
+Attendance at these sessions is not strictly compulsory, however you will miss
+out on learning activities by not attending. Students often find that the
+learning experiences from the tutorials are directly helpful in completing
+the assignments and the final exam.
 </p>
 </div>
 
@@ -19,15 +37,19 @@ TODO: Insert spiel on what tutorials are about.
 
 <p>
 The purpose of this task is to become familiar with writing, saving, and
-running programs from IDLE. Write a program which, when run, displays the text
-<tt><span class="result">Hello, World!</span></tt>. Then, close IDLE, and
+running programs from IDLE. Write a program which, when run, outputs the text
+<tt><span class="result">Hello, World!</span></tt>, and save it as
+<tt>hello.py</tt>.
+
+<p>
+Then, close IDLE, and
 navigate the filesystem (in Windows Explorer or equivalent) to find the program
 you just wrote, open it in IDLE, and run it.
 </p>
 
 <p>
-Then, modify the program to first ask the user what their name is
-(using <tt><span class="builtin">raw_input</span></tt>), and then display
+Next, modify the program to first ask the user what their name is
+(using <tt><span class="builtin">raw_input</span></tt>), and then output
 a greeting using their name. For example (the blue text is
 output from the program, the black text is input from the user):
 </p>
@@ -55,6 +77,79 @@ manually add <tt>.py</tt> to the end of the filename in order to keep the
 syntax highlighting.</li>
 </ul>
 </div>
+
+<h2>Guess the Expression</h2>
+
+<p>
+For each of the below expressions, make a guess on what the result of the
+expression should be.
+Discuss your guesses with the other people at your table, or with a tutor,
+before running the code in IDLE. After running the code, if you didn't guess
+correctly, discuss why it produced the result that it did, or experiment with
+some other examples yourself.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> 3--2
+
+<span class="prompt">&gt;&gt;&gt;</span> 5 / 2
+
+<span class="prompt">&gt;&gt;&gt;</span> -5 / 2
+
+<span class="prompt">&gt;&gt;&gt;</span> 5.0 / 2
+
+<span class="prompt">&gt;&gt;&gt;</span> 3.0 - 5 / 2
+
+<span class="prompt">&gt;&gt;&gt;</span> <span class="string">'3'</span> + <span class="string">'12'</span>
+
+<span class="prompt">&gt;&gt;&gt;</span> 3 + <span class="string">'12'</span>
+
+<span class="prompt">&gt;&gt;&gt;</span> 3 * <span class="string">'12'</span>
+
+<span class="prompt">&gt;&gt;&gt;</span> <span class="string">'ba'</span>+<span class="string">'na'</span> * 2
+
+<span class="prompt">&gt;&gt;&gt;</span> <span class="string">'hello'</span> - <span class="string">'o'</span>
+
+<span class="prompt">&gt;&gt;&gt;</span> <span class="string">'ababab'</span> / 3
+
+<span class="prompt">&gt;&gt;&gt;</span> 2 ** 3
+
+<span class="prompt">&gt;&gt;&gt;</span> 9 ** 1/2
+
+<span class="prompt">&gt;&gt;&gt;</span> 11 % 4
+
+<span class="prompt">&gt;&gt;&gt;</span> -11 % 4
+
+<span class="prompt">&gt;&gt;&gt;</span> <span class="string">'Tim'</span> &gt; <span class="string">'Tom'</span>
+
+<span class="prompt">&gt;&gt;&gt;</span> <span class="string">'A'</span> &lt; <span class="string">'a'</span>
+</pre>
+
+<h2>Leap Years</h2>
+
+<p>
+A leap year occurs when the year is a multiple of four, unless the year is a
+multiple of 100. However, if the year is a multiple of 400, then it is a leap
+year. For instance, 2016 and 2000 are leap years, but 1900 is not.
+</p>
+
+<p>
+Create a new Python source file, and write a function <tt>is_leap_year</tt>
+which takes an integer (representing a year), and returns
+<tt><span class="builtin">True</span></tt> if the year is a leap year, and
+<tt><span class="builtin">False</span></tt> if not.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> is_leap_year(1900)
+<span class="result">False</span>
+<span class="prompt">&gt;&gt;&gt;</span> is_leap_year(1999)
+<span class="result">False</span>
+<span class="prompt">&gt;&gt;&gt;</span> is_leap_year(2000)
+<span class="result">True</span>
+<span class="prompt">&gt;&gt;&gt;</span> is_leap_year(2016)
+<span class="result">True</span>
+</pre>
 
 <h2>Alice's Addition Academy</h2>
 
@@ -86,12 +181,14 @@ Some example interactions with the program is as follows:
 <b>Hint:</b>
 <p>
 To generate random integers, first put <tt><span class="keyword">import</span>
-random</tt> at the top of the file, then use <tt>random.randint(10, 99)</tt> to
-generate a random 2-digit integer.
+random</tt> at the top of the file, then use the function call
+<tt>random.randint(10, 99)</tt> to generate a random 2-digit integer.
 </p>
 
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span> <span class="keyword">import</span> random
+<span class="prompt">&gt;&gt;&gt;</span> random.randint(10, 99)
+<span class="result">73</span>
 <span class="prompt">&gt;&gt;&gt;</span> x = random.randint(10, 99)
 <span class="prompt">&gt;&gt;&gt;</span> x
 <span class="result">12</span>
@@ -106,7 +203,5 @@ the random module, or find
 <a href="http://docs.python.org/2/library/random.html">online documentation</a>.
 </p>
 </div>
-
-TODO: more tasks.
 
 </html>
