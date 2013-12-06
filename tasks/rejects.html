@@ -82,14 +82,39 @@ For example:
 It is safe to assume that both inputs contain only letters.
 </p>
 
-<h2>Recursion: Minimums</h2>
+<h2>Recursion: List Sorting</h2>
 
-<i>Comment: An easier warm-up task.</i>
+<i>A bit too hard for a warm-up task.</i>
 
 <p>
-Write a recursive function which takes a list of numbers, and returns the
-smallest element in the list, without using the builtin
-<tt><span class="builtin">min</span></tt> function. If the list is empty, raise
-a <tt><span class="builtin">ValueError</span></tt>.
+Sorting a list of data is a common task in many applications of computing.
+There are many different methods (or <i>algorithms</i>) for sorting data, one
+such method, called <i>insertion sort</i> is as follows: first find the
+smallest element, 'remove' it from the list, then sort the remaining elements,
+and insert the smallest element back in front of the list.
 </p>
 
+<p>
+Write a recursive function <tt>sort</tt> which takes a list, and returns a
+sorted version of the list using this method.
+</p>
+
+<div class="important">
+<b>Hint:</b>
+<p>
+It may help to use the <tt><span class="builtin">min</span></tt> function and
+<tt>list.index</tt> method, as well as list slicing.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> nums = [5, 2, 4, 1, 3]
+<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">min</span>(nums)
+<span class="result">1</span>
+<span class="prompt">&gt;&gt;&gt;</span> nums.index(1)
+<span class="result">3</span>
+<span class="prompt">&gt;&gt;&gt;</span> nums[3] == 1
+<span class="result">True</span>
+<span class="prompt">&gt;&gt;&gt;</span> nums[:3] + nums[4:]
+<span class="result">[5, 2, 4, 3]</span>
+</pre>
+</div>
