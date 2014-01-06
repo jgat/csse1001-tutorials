@@ -146,9 +146,13 @@ def htmlify(text):
 
 if  __name__ == '__main__':
     argc = len(sys.argv)
+    if argc >= 2:
+        f = open(sys.argv[1], 'rU')
+    else:
+        f = sys.stdin
+    output = htmlify(f.read().strip())
     print "<pre>"
-    f = open(sys.argv[1], 'rU')
-    print htmlify(f.read().strip())
+    print output
     print "</pre>"
     #for i in f:
     #    print htmlify(i),
