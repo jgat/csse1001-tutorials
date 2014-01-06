@@ -1,9 +1,11 @@
-def sort(xs):
+def minimum(xs):
     if not xs:
-        return xs
-    m = min(xs)
-    i = xs.index(m)
-    return [m] + sort(xs[:i] + xs[i+1:])
+        raise ValueError("Empty list does not have a smallest element.")
+    if len(xs) == 1:
+        return xs[0]
+    else:
+        return min(xs[0], minimum(xs[1:])
+
 
 import os
 
