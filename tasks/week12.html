@@ -7,7 +7,91 @@
 <body>
 <h1>Week 12 Tutorial: Complexity</h1>
 
-TODO
+<h2>Uniquify</h2>
+
+<p>
+For this task, we want to write a function which removes duplicates from a
+list, analyse the computational complexity of the function, and then improve
+it.
+</p>
+
+<ol>
+<li>
+<p>
+Write a function <tt>uniquify(items)</tt> which takes a list, and returns a
+list containing each element of <tt>items</tt> without repeats. For example,
+</p>
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> uniquify([8, 3, 5, 8, 9, 4, 5, 2, 3, 5])
+[8, 3, 5, 9, 4, 2]
+</pre>
+<p>
+Now, suppose that <tt>items</tt> has length '<tt>n</tt>'. Approximate the
+number of 'steps' of computation the function requires to finish (in terms of
+<tt>n</tt>). Express your final answer as a computational complexity class
+(logarithmic/linear/quadratic/etc).
+</p>
+</li>
+
+<li>
+<p>
+Discuss how the complexity could be improved if the <tt>items</tt> list was
+sorted to begin with. Write a function <tt>uniquify2</tt> which removes
+duplicates from a list, by first sorting the list.
+Note: the order of elements in the output list is unimportant, as long as each
+appears only once.
+</p>
+<p>
+Hint: <tt><span class="builtin">sorted</span>(items)</tt> will give a copy of
+<tt>items</tt> in sorted order, without modifying the original list. It runs in
+O(n log n) time.
+</p>
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> uniquify2([8, 3, 5, 8, 9, 4, 5, 2, 3, 5])
+[2, 3, 4, 5, 8, 9]
+</pre>
+<p>
+Then, repeat the same analysis as above to determine the computational
+complexity of <tt>uniquify2</tt>, in terms of the length of the input list
+('<tt>n</tt>').
+</p>
+</li>
+
+<li>
+<p>
+In this course, we have already encountered a data type which contains a notion
+of 'uniqueness'. Discuss how to use this to write a function <tt>uniquify3</tt>
+which does the same task, with a better time complexity. Then, write such a
+function, and determine its complexity.
+</p>
+</li>
+
+<li>
+<p>
+Is it possible to solve this task with a faster time complexity than in
+<tt>uniquify3</tt>? Justify your answer.
+</p>
+</li>
+</ol>
+
+<p>
+The following code snippet will run the three <tt>uniquify</tt> functions
+multiple times on a large input, and measure the running time. Copy-paste the
+code in a source file containing the three function definitions, and run it.
+It may take a few minutes to finish, so move on to the next task while you're
+waiting.
+</p>
+
+<pre>
+<span class="keyword">import</span> random
+<span class="keyword">import</span> timeit
+
+N = 100000
+items = [random.randint(0,N)<span class="keyword"> for </span>i<span class="keyword"> in </span><span class="builtin">xrange</span>(N)]
+<span class="keyword">print</span> <span class="string">"uniquify3:"</span>, min(timeit.repeat(<span class="string">'uniquify3(items)'</span>, <span class="string">'from __main__ import uniquify3, items'</span>, number=100))/100, <span class="string">'seconds'</span>
+<span class="keyword">print</span> <span class="string">"uniquify2:"</span>, min(timeit.repeat(<span class="string">'uniquify2(items)'</span>, <span class="string">'from __main__ import uniquify2, items'</span>, number=100))/100, <span class="string">'seconds'</span>
+<span class="keyword">print</span> <span class="string">"uniquify:"</span>, min(timeit.repeat(<span class="string">'uniquify(items)'</span>, <span class="string">'from __main__ import uniquify, items'</span>, number=1)), <span class="string">'seconds'</span>
+</pre>
 
 <h2>Past Exam Practice</h2>
 
