@@ -5,6 +5,7 @@ January 2014
 ### General Notes
 
 Students have a wide variety of learning resources available to them. For each topic, students should do things in the following order:
+
 1. Read the course notes on that topic before the lectures.
 2. Attend the lectures.
 3. Attempt the MyPyTutor tasks (due Monday of the week after the lectures).
@@ -24,7 +25,7 @@ At the start of the session, wander around the tables and ensure students are us
 - not saving files with a `.py` extension,
 - not knowing where to save it (files in `C:\Python27` are doomed to be lost forever... note also that some students (first years) may not have ever saved files to their H: drive before).
 
-The first "Hello, World" task does what it says on the label; the observant student may notice that the solution can be copied directly out of the course notes - bonus points to them for reading the notes!
+The first "Hello, World" task does what it says on the label, followed by a `x=raw_input(); print "Hello,", x` task; the observant student may notice that the solution can be copied directly out of the course notes - bonus points to them for reading the notes!
 
 The second task is an exercise in playing around with the IDLE console, as well as getting used to quirks like integer division, string operations, and the modulo operator. If students can't guess, encourage them to try more examples with different numbers/etc.
 
