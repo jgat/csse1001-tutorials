@@ -1,0 +1,27 @@
+def is_prime(n):					def is_prime(n):
+    """Return True if n is a prime number.		    """Return True if n is a prime number.
+
+    is_prime(int) -> bool				    is_prime(int) -> bool
+    """							    """
+    for i in range(2, n):				    for i in range(2, n):
+        # Check if i is a factor of n			        # Check if i is a factor of n
+        if n % i == 0:					        if n % i == 0:
+            return False				            return False
+        else:					     |	    return True
+            return True				     <
+
+def get_primes(n):					def get_primes(n):
+    """Return a list of the first n primes.		    """Return a list of the first n primes.
+
+    get_primes(int) -> list(int)			    get_primes(int) -> list(int)
+    """							    """
+    primes = ''					     |	    primes = []
+    i = 2						    i = 2
+    while len(primes) < n:				    while len(primes) < n:
+        if is_prime(i):					        if is_prime(i):
+            primes.append(i)				            primes.append(i)
+            i += 1				     |	        i += 1
+						     >	    return primes
+
+n = int(raw_input("How many primes? "))			n = int(raw_input("How many primes? "))
+print "The first" + n + "primes are:", primes	     |	print "The first", n, "primes are:", list_primes(n)

@@ -41,6 +41,53 @@ the taxable income of a person, and returns the amount of tax to pay (both in
 dollars).
 </p>
 
+<h2>Week 5: Processing Data in a String</h2>
+
+<i>Comment: Hard to make the task statement understandable; there are other
+good tasks to use instead.</i>
+
+<p>
+A for loop allows you to iterate over an iterable sequence. This
+means that you can construct a loop that will run once for each element in a 
+sequence (for example, each value in a list or each character in a string).
+</p>
+
+<p>
+In this task, we are given a string from which we wish to extract every character
+before a particular character sequence is encountered.
+</p>
+
+<p>
+Write a function, <tt><span class="builtin">string_before</span></tt>, which
+takes two strings as arguments. The first is the string from which we aim to
+extract the characters. The second is the delimiting sequence.
+</p>
+
+<div class="important">
+<b>Hint:</b>
+<p>
+A <tt><span class="builtin">break</span></tt> statement can be used to terminate 
+a while or for loop.
+</p>
+<p>
+A <tt><span class="builtin">continue</span></tt> statement will cause a loop to
+immediately move to the next item in the sequence.
+</p>
+
+<pre>
+<span class="prompt"></span> for item in [1, 2, 3, 4, 5, 6, 7, 8]:
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;if item % 2:
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;elif item == 6:
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;print item
+<span class="result"></span> 2
+<span class="result"></span> 4
+</pre>
+</div>
+
+
+
 <h2>Week 11 (Recursion): Alphabetic Words</h2>
 
 <i>Comment: This task was originally going to be a warm-up towards the
