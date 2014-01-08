@@ -44,7 +44,6 @@ The final task is to write an `interact` function, which does the same [REPL](ht
 ### Week 4 - Abstract Data Types (aka "Indexing and looping over strings")
 
 The main take-home points from this week are how to loop over strings, how to slice strings, and more of how to take a high-level problem description ("find a number in this string") and turn it into code.
-Students may need reminding of the `enumerate` function.
 The extension task is useful, but some students may not get time to attempt it within the hour.
 
 ### Week 5 - Classes and Objects (aka "String methods, Lists and Files")
