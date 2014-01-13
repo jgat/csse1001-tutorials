@@ -7,7 +7,124 @@
 <body>
 <h1>Week 13 Tutorial: Functional Programming</h1>
 
-TODO
+<h2>Number Hunting</h2>
+
+<p>This exercise is on list comprehensions.</p>
+
+<p>
+Write a function <tt>find_numbers</tt> to identify and extract numbers out of
+a string, and return them as a list of integers. The function only needs to
+identify space-separated "words" which are all digits. (Hint: use
+<tt>str.split</tt> and <tt>str.isdigit</tt>.)
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> text = <span class="string">"It aired 45 episodes airing over 4 series from 1969 to 1974."</span>
+<span class="prompt">&gt;&gt;&gt;</span> find_numbers(text)
+<span class="result">[45, 4, 1969]</span>
+</pre>
+
+<p>Note that <tt>1974</tt> is not found, since the "word"
+<tt><span class="string">'1974.'</span></tt> is not all digits.</p>
+
+<p>Then, rewrite the function using a list comprehension. Finally, express
+the function as a <tt><span class="keyword">lambda</span></tt> expression,
+and check it works as expected.</p>
+
+<h2>Separating Strings</h2>
+
+<p>This exercise is on higher-order functions and lambda expressions.</p>
+
+<p>A common way to delimit data in a string is to use commas (<tt>,</tt>);
+these are known as "comma-separated values". For instance, the string
+<tt><span class="string">'John,Carol,Michael'</span></tt> represents the three
+names <tt>[<span class="string">'John'</span>, <span class="string">'Carol'</span>,
+<span class="string">'Michael'</span>]</tt>. Instead of commas, data can also
+be delimited using semicolons (<tt>;</tt>), pipes (<tt>|</tt>), or any other
+strings.</p>
+
+<p>Write three functions <tt>separate_comma</tt>, <tt>separate_semicolon</tt>,
+and <tt>separate_pipe</tt> which separate a string up by commas, semicolons,
+and pipes respectively. For example:</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> separate_comma(<span class="string">'John,Carol,Michael'</span>)
+<span class="result">['John', 'Carol', 'Michael']</span>
+<span class="prompt">&gt;&gt;&gt;</span> separate_semicolon(<span class="string">'John;Carol;Michael'</span>)
+<span class="result">['John', 'Carol', 'Michael']</span>
+<span class="prompt">&gt;&gt;&gt;</span> separate_pipe(<span class="string">'John|Carol|Michael'</span>)
+<span class="result">['John', 'Carol', 'Michael']</span>
+</pre>
+
+<p>We notice that the three functions above are very similar, and their
+implementation is almost exactly the same, so we can do better. Write a function
+<tt>separate</tt> which takes a delimiter (e.g. <tt><span class="string">','</span></tt>,
+<tt><span class="string">';'</span></tt>, <tt><span class="string">'|'</span></tt>)
+as an argument, and returns a function which separates strings on that delimiter.
+</p>
+
+<p>Finally, rewrite the original three <tt>separate_*</tt> functions using
+<tt>separate</tt>, and check they work as expected.</p>
+
+<h2>Interaction</h2>
+
+<p>This exercise is on generators.</p>
+
+<p>Recall that the <tt><span class="builtin">raw_input</span></tt> function
+can be used inside a <tt><span class="keyword">while</span></tt> loop to get
+repeated lines of input from the user. The following simple example will play a
+game of <a href="http://en.wikipedia.org/wiki/Simon_Says" target="_blank">Simon
+Says</a> with the user.</p>
+
+<pre>
+<span class="keyword">def</span> <span class="classordef">simon_says</span>():
+    magic_word = <span class="string">"simon says "</span>
+    <span class="keyword">while</span> <span class="builtin">True</span>:
+        cmd = <span class="builtin">raw_input</span>(<span class="string">"Command: "</span>).lower()
+       <span class="keyword"> if </span>cmd == <span class="string">'q'</span>:
+            <span class="keyword">break</span>
+       <span class="keyword"> if </span>cmd.startswith(magic_word):
+            <span class="keyword">print</span> <span class="string">"I"</span>, cmd[<span class="builtin">len</span>(magic_word):]
+        <span class="keyword">else</span>:
+            <span class="keyword">print</span> <span class="string">"I don't do anything"</span>
+</pre>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> simon_says()
+<span class="result">Command: </span>Simon says jump
+<span class="result">I jump</span>
+<span class="result">Command: </span>Sit
+<span class="result">I don't do anything</span>
+<span class="result">Command: </span>q
+</pre>
+
+<p>We notice that this function really does two things - it takes input from
+the user, and processes it into output; we'd like to split these two tasks into
+separate functions. Write a generator function <tt>get_commands</tt> which
+takes commands from <tt><span class="builtin">raw_input</span></tt>, converts
+them to lower-case, and yields them, until the user inputs
+<tt><span class="string">'q'</span></tt>. An example of using this function is
+as follows:</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> x = get_commands()
+<span class="prompt">&gt;&gt;&gt;</span> x
+<span class="result">&lt;generator object get_commands at 0x10d504730&gt;</span>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">next</span>(x)
+<span class="result">Command: </span>Simon says jump
+<span class="result">'simon says jump'</span>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">next</span>(x)
+<span class="result">Command: </span>Sit
+<span class="result">sit'</span>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">next</span>(x)
+<span class="result">Command: </span>q
+<span class="error">Traceback (most recent call last):
+  File "&lt;input&gt;", line 1, in &lt;module&gt;
+StopIteration</span>
+</pre>
+
+<p>Then, rewrite the function <tt>simon_says</tt> using <tt>get_commands</tt>,
+and check that it works.</p>
 
 <h2>Past Exam Practice</h2>
 
@@ -15,5 +132,20 @@ TODO
 Attempt some of the past exam questions, accessible from the UQ Library
 website. The tutors will sugggest questions to attempt.
 </p>
+
+<div class="extra">
+<b>Challenge Task: Permutations</b>
+
+<p>A permutation of a list is a re-ordering of elements in the list. For example,
+the permutations of <tt>[1, 2, 5]</tt> are <tt>[1, 2, 5]</tt>, <tt>[1, 5, 2]</tt>,
+<tt>[2, 1, 5]</tt>, <tt>[2, 5, 1]</tt>, <tt>[5, 1, 2]</tt>, and <tt>[5, 2, 1]</tt>.
+</p>
+
+<p>Write a generator function <tt>permutations</tt> which takes a list, and yields
+all permutations of the list. Hint: use recursion.</p>
+
+<p>Discuss why it is advantageous to use a generator in this exercise, instead
+of returning a list of permutations.</p>
+</div>
 
 </html>
