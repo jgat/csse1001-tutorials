@@ -87,6 +87,58 @@ immediately move to the next item in the sequence.
 </div>
 
 
+<h2>Week 5: Using Enumerate</h2>
+
+<i>Commment: Not enough room in the tutorial for this exercise.</i>
+
+<p>it is often useful for a <tt><span class="builtin">for</span></tt> loop to
+be able to access both the value of some element in a sequence and its index at
+the same time. We can do this using the 
+<tt><span class="builtin">enumerate</span></tt> function.
+</p>
+
+<p>
+<tt><span class="builtin">enumerate</span></tt> generates a sequence of tuples, 
+where the first item in the tuple is the index of the current in the sequence 
+and the second item is its value. A <tt><span class="builtin">for</span></tt> 
+loop can the iterate over both items at once.
+</p>
+
+<div class="important">
+<b>Example:</b>
+<pre>
+<span class="prompt"></span> for index, item in enumerate('abc'):
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;print index, item
+<span class="result"></span> 0 a
+<span class="result"></span> 1 b
+<span class="result"></span> 2 c
+</div>
+
+<p>
+The message below has been encoded using a very simple scheme: a random letter 
+has been inserted before every second letter in the original message (starting 
+with the first letter, ie indexed from 0).
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;encode(<span class="string">'Test of encoding function')</span>
+<span class="result"></span> 'lTretsxty qocfz aeunrcoomdliknegv zfzuwnfcrtzixotn'
+</pre>
+
+<p>
+In this task, you will need to write a <tt><span class="builtin">decode</span></tt>
+that takes a single encoded string as an argument and returns the original message.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;decode(<span class="string">'lTretsxty qocfz aeunrcoomdliknegv zfzuwnfcrtzixotn')</span>
+<span class="result"></span> 'Test of encoding function'
+</pre>
+
+<p>
+This can also be done using string slicing in just one line!
+</p>
+
 
 <h2>Week 11 (Recursion): Alphabetic Words</h2>
 

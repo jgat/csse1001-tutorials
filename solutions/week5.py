@@ -23,4 +23,29 @@ def get_primes(n):
     return primes
 
 n = int(raw_input("How many primes? "))
-print "The first", n, "primes are:", list_primes(n)
+print "The first", n, "primes are:", get_primes(n)
+
+###############################################################################
+
+def find_functions(filename):
+    fin = open(filename)
+    fout = open('functions.txt', 'w')
+    for line in fin:
+        if line.startswith('def '):
+            _, _, line = line.partition('def ')
+            name, _, _ = line.partition('(')
+            print >> fout, name
+    fin.close()
+    fout.close()
+
+def find_functions(filename):
+    fd = open(filename)
+    functions = []
+    for lnum, line in enumerate(fd, 1):
+        if line.startswith('def '):
+            _, _, line = line.partition('def ')
+            name, _, line = line.partition('(')
+            args, _, _ = line.partition(')')
+            args = tuple(args.split(', '))
+            functions.append((lnum, name, args))
+    return functions

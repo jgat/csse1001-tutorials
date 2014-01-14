@@ -11,9 +11,10 @@
 
 <p>
 Your tutors have tried to write a program which finds the first <tt>n</tt>
-prime numbers, for some <tt>n</tt>. Unfortunately, their code has several bugs
+prime numbers, for an integer <tt>n</tt>. Unfortunately, their code has several bugs
 in it, and they need some help. Their code is shown below; your task is to find
-and fix the errors.
+and fix the errors. This code can also be downloaded as
+<a href="week5_primes.py">week5_primes.py</a>.
 </p>
 
 
@@ -55,95 +56,45 @@ The following example shows how the program should work:
 <span class="result">The first 7 primes are: [2, 3, 5, 7, 11, 13, 17]</span>
 </pre>
 
-<h2>Using Enumerate</h2>
+<h2>Function Finder</h2>
 
-<p>it is often useful for a <tt><span class="builtin">for</span></tt> loop to
-be able to access both the value of some element in a sequence and its index at
-the same time. We can do this using the 
-<tt><span class="builtin">enumerate</span></tt> function.
-</p>
+<p>In this task, we will write a function which reads and analyses Python source
+code files. In particular, the function we write will find all function
+definitions within the file.</p>
 
+<ol>
+<li>
 <p>
-<tt><span class="builtin">enumerate</span></tt> generates a sequence of tuples, 
-where the first item in the tuple is the index of the current in the sequence 
-and the second item is its value. A <tt><span class="builtin">for</span></tt> 
-loop can the iterate over both items at once.
-</p>
-
-<div class="important">
-<b>Example:</b>
-<pre>
-<span class="prompt"></span> for index, item in enumerate('abc'):
-<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;print index, item
-<span class="result"></span> 0 a
-<span class="result"></span> 1 b
-<span class="result"></span> 2 c
-</div>
-
-<p>
-The message below has been encoded using a very simple scheme: a random letter 
-has been inserted before every second letter in the original message (starting 
-with the first letter, ie indexed from 0).
+Write a function <tt>find_functions(filename)</tt> that takes the name of
+a file containing Python code, and finds the name of each function defined in
+the file. The output should be written to a file called <tt>functions.txt</tt>,
+with one function name per line.
+You may like to use the sample file <a href="week5_functions.py">week5_functions.py</a>
+to test your code. For this file, the output file <tt>functions.txt</tt> should
+contain:
 </p>
 
 <pre>
-<span class="prompt">&gt;&gt;&gt;</span>&nbsp;encode(<span class="string">'Test of encoding function')</span>
-<span class="result"></span> 'lTretsxty qocfz aeunrcoomdliknegv zfzuwnfcrtzixotn'
+square
+add
+get_0
 </pre>
-
+</li>
+<li>
 <p>
-In this task, you will need to write a <tt><span class="builtin">decode</span></tt>
-that takes a single encoded string as an argument and returns the original message.
+Modify this function to instead return a list of tuples of the form
+<tt>(linenum, name, args)</tt>, where <tt>name</tt> is the name of a function,
+<tt>args</tt> is a tuple of parameter names to the function, and <tt>linenum</tt>
+is the line number containing the function definition. For example,
 </p>
 
 <pre>
-<span class="prompt">&gt;&gt;&gt;</span>&nbsp;decode(<span class="string">'lTretsxty qocfz aeunrcoomdliknegv zfzuwnfcrtzixotn')</span>
-<span class="result"></span> 'Test of encoding function'
+<span class="prompt">&gt;&gt;&gt;</span> find_functions(<span class="string">'week5_functions.py'</span>)
+<span class="result">[(1, 'square', ('x',)),
+ (4, 'add', ('x', 'y')),
+ (12, 'get_0', ())]</span>
 </pre>
-
-<p>
-This can also be done using string slicing in just one line!
-</p>
-
-<h2>For Loops and File I/O</h2>
-
-<p>
-When designing real applications or scripts in python, you will almost always want to read data from and write data to files on the hard drive. Python handles file reads and writes through file objects, which are created by the <tt><span class="builtin">open</span></tt> function
-</p>
-
-<div class="important">
-<b>Example:</b>
-<pre>
-<span class="prompt">&gt;&gt;&gt;</span> f = open(<span class="string">'psn_paswords.txt'</span>, <span class="string">'U'</span>)
-<span class="prompt">&gt;&gt;&gt;</span> f
-<span class="result"></span> open file 'psn_passwords.txt', mode 'U' at 0x1016efc90
-</div>
-
-<p>
-Files are iterable objects in python, which means you can use a for loop to look at their contents one line at a time, just as you can use them to process characters in strings and items in lists.
-</p>
-
-<pre>
-<span class="prompt">&gt;&gt;&gt;</span>&nbsp;for lineNum, line in enumerate(f):
-<span class="prompt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print i, line </span>
-<span class="result"></span>
-<span class="result">0 sony@psn.net guest</span>
-
-</pre>
-
-<p>
-Write a function <tt><span class="builtin">parse_file</span></tt> that takes one argument, 
-<tt><span class="builtin">filename</span></tt>, which points to a file containing python code
-and extracts information about functions in that file.
-You can create such a file by combining solutions to previous tutorial questions 
-or you can use the example file provided on the website.
-</p>
-
-<p>
-Your function should parse this file to return a list of tuples of the form
-(<tt><span class="builtin">linenum</span></tt>, <tt><span class="builtin">function</span></tt>,
-<tt><span class="builtin">args</span></tt>). <tt><span class="builtin">linenum</span></tt>
-is the line number of a function, <tt><span class="builtin">function</span></tt> is
-the name of that function and <tt><span class="builtin">args</span></tt> is a tuple containing the argument names (if any).
+</li>
+</ol>
 
 </html>

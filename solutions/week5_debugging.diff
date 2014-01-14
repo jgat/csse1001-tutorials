@@ -24,4 +24,4 @@ def get_primes(n):					def get_primes(n):
 						     >	    return primes
 
 n = int(raw_input("How many primes? "))			n = int(raw_input("How many primes? "))
-print "The first" + n + "primes are:", primes	     |	print "The first", n, "primes are:", list_primes(n)
+print "The first" + n + "primes are:", primes	     |	print "The first", n, "primes are:", get_primes(n)
