@@ -32,9 +32,7 @@ def find_functions(filename):
     fout = open('functions.txt', 'w')
     for line in fin:
         if line.startswith('def '):
-            _, _, line = line.partition('def ')
-            name, _, _ = line.partition('(')
-            print >> fout, name
+            print >> fout, line.rstrip()
     fin.close()
     fout.close()
 
