@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class Design</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 7 Tutorial: Class Design</h1>
+
+<h2>Class Structure</h2>
+
+<p>
+A <tt><span class="builtin">class</span></tt> can be thought of as a blueprint
+for a particular type of object. All objects of a certain type have
+characteristics (data, or state) and behavior (methods) in common, and so it is
+convenient to abstract these qualities into a class.
+</p>
+
+<p>
+You've been using classes since you first started using python; addition in IDLE
+makes use of the <tt><span class="builtin">int</span></tt> class, working with
+strings involves the <tt><span class="builtin">str</span></tt> class, lists are
+based on the <tt><span class="builtin">list</span></tt> class, and so on.
+</p>
+
+<p>
+We can define our own classes in a similar way to defining functions. For
+example, a basic outline of a Student class might be as follows:
+</p>
+
+<pre>
+<span class="prompt"></span>class Student(object):
+<span class="prompt"></span>    def __init__(self, name):
+<span class="prompt"></span>        self.setName(name)
+<span class="prompt"></span>
+<span class="prompt"></span>    def get_name(self):
+<span class="prompt"></span>        return self._name
+<span class="prompt"></span>
+<span class="prompt"></span>    def set_name(self, name):
+<span class="prompt"></span>        self._name = name
+</pre>
+
+<p>
+Interacting with classes is also quite simple. Here is an example of how to
+create an instance of the Person class:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> peter = Student('Peter Griffin')
+<span class="prompt">&gt;&gt;&gt;</span> peter
+<span class="result"></span><__main__.Student object at 0x103961150>
+<span class="prompt">&gt;&gt;&gt;</span> peter.get_name()
+<span class="result"></span>'Peter Griffin'
+</pre>
+
+<p>
+Extend this class so that it manages the following pieces of information:
+    <ol>
+        <li>Date of Birth (a string formatted as <i>ddmmyyyy</i>)</li>
+        <li>Student Number</li>
+        <li>Degree</li>
+        <li>Grades (stored in a list of integers)</li>
+    </ol>
+</p>
+
+<p>
+Write a function, <tt><span class="builtin">get_highest_gpa</span></tt>, that takes
+a list of <tt><span class="builtin">Student</span></tt>s as it's only argument
+and returns the <tt><span class="builtin">Student</span></tt> with the highest
+GPA.
+</p>
+
+<h2>Extension</h2>
+
+<p>
+Construct a simple class to model a course. This class should handle the course's
+acronym, title, teaching semester and class list. Functions should also be
+made that allow students to be added to and removed from the class list.<br>
+</p>
+
+<p>
+Add functionality to the <tt><span class="builtin">Student</span></tt> class
+so that each instance is capable of recording the courses that a student has
+been enrolled in. You should write methods that allow you to add and remove
+a course from the student's record.<br>
+Furthermore, you will need to modify the way that grades are stored so that
+they become associated with a relevant course.<br>
+Write a function, <tt><span class="builtin">add_to_course</span></tt>, that
+takes an instance of the <tt><span class="builtin">Student</span></tt> class and
+an instance of the <tt><span class="builtin">Course</span></tt> class as
+arguments.<br>
+This function should assure that the <tt><span class="builtin">Student</span></tt>
+is noted in the <tt><span class="builtin">Course</span></tt> instance and vice-versa.
+</p>
+
+</body>
+</html>
