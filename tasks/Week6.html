@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Classes, Error Handling and I/O Tutorial</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 6 Tutorial: Classes, Error Handling and I/O</h1>
+
+<h2>Dictionaries</h2>
+<p>
+A dictionary maintains a one-to-one relationship between a set of keys and
+their associated values. In other words, each unique key in a dictionary is
+associated with a corresponding value.
+</p>
+<p>
+The following dictionary contains the letters from a to e as keys, with the
+associated index within the alphabet as the value.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d
+<span class="result"></span> {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+</pre>
+
+<p>
+The value associated with a given key can be accessed by using the key as an index
+to the dictionary:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['e']
+<span class="result"></span>5
+</pre>
+
+<p>
+Values can be added to a dictionary by a simple assignment statement, as
+shown below. If the key already exists, its value will be updated; if it does
+not, then a new key will be created with the specified value.
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['e'] = 0
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['e']
+<span class="result"></span>0
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['f'] = 10
+<span class="prompt">&gt;&gt;&gt;</span>&nbsp;d
+<span class="result"></span> {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 0, 'f': 10}
+</pre>
+
+<p>
+In the game <i>Scrabble</i> points are scored by summing the value of the
+letters in a word. The number of points assigned to each letter is dependent on
+the frequency of the that letter's occurance in standard English words. Below
+is a table that maps each letter to it's corresponding value.
+</p>
+
+<img src='img/ScrabbleMappings.png' alt='Scrabble Mappings'/>
+
+<p>
+You have been provided with a file, <tt><span class="builtin">scrabble_scores.txt</span></tt>,
+that contains each of the letters in the alphabet and the appropriate value.
+Using the file I/O methods from last week's tutorial write a function,
+<tt><span class="builtin">get_score</span></tt>, that takes a string as input
+and returns the word's scrabble score. It may help to store a mapping of letters
+to their scores in a dictionary.
+</p>
+
+<p>
+You have been provided with another file, <tt><span class="builtin">user_config.txt</span></tt>.
+This file stores user data in the following form:
+</p>
+
+<pre>
+<span class="result"></span>[user]
+<span class="result"></span>name=Homer
+<span class="result"></span>email=h.simpson@nplant.com
+<span class="result"></span>mobile=0412345678
+<span class="result"></span>[notifications]
+<span class="result"></span>email=yes
+<span class="result"></span>sms=no
+</pre>
+
+<p>
+This data can be parsed into the following dictionary:
+</p>
+
+<pre>
+<span class="result"></span>{'user': {'name': 'Home', 'email': 'h.simpson@nplant.com'},
+'notification settings': {'email': 'yes', 'sms': 'no'}}
+</pre>
+
+<p>
+Write a function, <tt><span class="builtin">parse_data</span></tt>, that will
+perform this operation.
+</p>
+
+<p>
+Given the above dictionary, and the name of a dot-separated config setting
+(e.g. 'user.name'), return the appropriate value ('Homer' in this case). It is
+safe to assume that the name of config settings do not contain a '.'.
+</p>
+
+<h2>Errors and Exceptions</h2>
+
+<p>
+It is highly likely that you will have experience an error or exception of some
+sort so far in the course. It's okay - we all make them. The most common error
+that we are likely to experience is the <i>Syntax Error</i>. Such an error is
+experienced when we write code that Python is unable to parse. For example:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> for i in range(10)
+<span class="result"></span>SyntaxError: invalid syntax
+</pre>
+
+<p>
+Often programs will rely on input from a user. In these cases, there can be no
+guarantee that the user will input acceptable data. Hence, we must be able to
+catch any errors (Exceptions) and handle them appropriately.
+Handling an error simply requires us to surround the susceptible code in a
+<tt><span class="builtin">try</span></tt>, <tt><span class="builtin">except</span></tt>
+statement. A simple example of this is given below:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> try:
+<span class="prompt">&gt;&gt;&gt;</span>     42/0
+<span class="prompt">&gt;&gt;&gt;</span> except Exception:
+<span class="prompt">&gt;&gt;&gt;</span>     print 'Cannot divide by zero!'
+<span class="result"></span>
+<span class="result"></span>Cannot divide by zero!
+</pre>
+
+<p>
+Exceptions can also be raised using a <tt><span class="builtin">raise</span></tt>
+statement. An accompanying message can be included in the exception. An example
+has been provided below:
+</p>
+
+<pre>
+<span class="prompt"></span>def countChars(word):
+<span class="prompt"></span>    if type(word) != str:
+<span class="prompt"></span>        raise TypeError("The input was not a string")
+<span class="prompt"></span>    else:
+<span class="prompt"></span>        return len(word)
+
+<span class="prompt">&gt;&gt;&gt;</span> countChars(42)
+<span class="result"></span>Traceback (most recent call last):
+<span class="result"></span>  File "<pyshell#17>", line 1, in <module>
+<span class="result"></span>    countChars(1)
+<span class="result"></span>  File "/home/CSSE1001/Tutorials/Week 6", line 3, in countChars
+<span class="result"></span>    raise TypeError("The input was not a string.")
+<span class="result"></span>TypeError: The input was not a string.
+</pre>
+
+<p>
+Using this knowledge, extend your <tt><span class="builtin">parse_data</span></tt> function so that it caters for incorrectly formatted configuration files. For example, a line
+that does not match the syntax <tt><span class="builtin">[...]</span></tt> or <tt><span class="builtin">...=...</span></tt> should raise a <tt><span class="builtin">ValueError</span></tt>.
+</p>
+</body>
+</html>
