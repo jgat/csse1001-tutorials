@@ -11,6 +11,35 @@
 
 <p>This exercise is on list comprehensions.</p>
 
+<div class="important">
+<b>Review: List Comprehensions</b>
+
+<p>
+A list comprehension is a shorthand way of performing a for-loop to
+produce a new list. For example,
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">range</span>(6)
+<span class="result">[0, 1, 2, 3, 4, 5]</span>
+<span class="prompt">&gt;&gt;&gt;</span> [2 * x<span class="keyword"> for </span>x<span class="keyword"> in </span><span class="builtin">range</span>(6)]
+<span class="result">[0, 2, 4, 6, 8, 10]</span>
+<span class="prompt">&gt;&gt;&gt;</span> [2 * x<span class="keyword"> for </span>x<span class="keyword"> in </span><span class="builtin">range</span>(6)<span class="keyword"> if </span>x != 4]
+<span class="result">[0, 2, 4, 6, 10]</span>
+</pre>
+
+<p>The final example is equivalent to the following code block (except that the
+above example doesn't use the variable <tt>result</tt>):</p>
+
+<pre>
+result = []<span class="keyword">
+for </span>x<span class="keyword"> in </span><span class="builtin">range</span>(6):
+   <span class="keyword"> if </span>x != 4:
+        result.append(2 * x)
+</pre>
+
+</div>
+
 <p>
 Write a function <tt>find_numbers</tt> to identify and extract numbers out of
 a string, and return them as a list of integers. The function only needs to
@@ -34,6 +63,21 @@ and check it works as expected.</p>
 <h2>Separating Strings</h2>
 
 <p>This exercise is on higher-order functions and lambda expressions.</p>
+
+<div class="important">
+<b>Review: Lambda Expressions</b>
+
+<p><tt><span class="keyword">lambda</span></tt> expressions are a shorthand way
+of creating simple functions, when it is inconvenient and unnecessary to use a
+<tt><span class="keyword">def</span></tt> statement. The only restriction is
+that the function does nothing except immediately return a value. For example,
+the following function takes two arguments and returns their sum:</p>
+
+<pre>
+<span class="keyword">lambda</span> x, y: x + y
+</pre>
+
+</div>
 
 <p>A common way to delimit data in a string is to use commas (<tt>,</tt>);
 these are known as "comma-separated values". For instance, the string
@@ -61,6 +105,7 @@ implementation is almost exactly the same, so we can do better. Write a function
 <tt>separate</tt> which takes a delimiter (e.g. <tt><span class="string">','</span></tt>,
 <tt><span class="string">';'</span></tt>, <tt><span class="string">'|'</span></tt>)
 as an argument, and returns a function which separates strings on that delimiter.
+Use a lambda expression in the return value.
 </p>
 
 <p>Finally, rewrite the original three <tt>separate_*</tt> functions using
@@ -69,6 +114,82 @@ as an argument, and returns a function which separates strings on that delimiter
 <h2>Simon Says</h2>
 
 <p>This exercise is on generators.</p>
+
+<div class="important">
+<b>Review: Generators</b>
+
+<p>A normal function runs all of its code from beginning to end, and finishes
+by returning a value. A generator instead allows us to instead run part of its
+code, <em>yield</em> a value back to the caller, then later be resumed when it
+is required. By yielding a new value each time it's resumed, it will generate
+a sequence of values (which might even be infinitely long).</p>
+
+<p>Since a generator acts as a sequence, it can be looped over using a for-loop,
+or by any other method which uses an iterable (e.g.
+<tt><span class="builtin">enumerate</span></tt> or
+<tt><span class="builtin">str</span>.join</tt>). The following example shows
+how the program flows back and forth between the main function and the
+generator.</p>
+
+<pre>
+<span class="keyword">def</span> <span class="classordef">generator</span>():
+    <span class="keyword">print</span> <span class="string">"generator: begin"</span>
+   <span class="keyword"> for </span>i<span class="keyword"> in </span><span class="builtin">range</span>(3):
+        <span class="keyword">print</span> <span class="string">"generator: about to yield"</span>, i
+        <span class="keyword">yield</span> i
+        <span class="keyword">print</span> <span class="string">"generator: resumed. i ="</span>, i
+    <span class="keyword">print</span> <span class="string">"generator: end"</span>
+
+<span class="keyword">def</span> <span class="classordef">main</span>():
+    <span class="keyword">print</span> <span class="string">"main:      begin"</span>
+    g = generator()
+    <span class="keyword">print</span> <span class="string">"main:      about to enter loop"</span>
+   <span class="keyword"> for </span>value<span class="keyword"> in </span>g:
+        <span class="keyword">print</span> <span class="string">"main:      inside loop. value ="</span>, value
+    <span class="keyword">print</span> <span class="string">"main:      end"</span>
+
+
+<span class="prompt">&gt;&gt;&gt;</span> main()
+<span class="result">main:      begin
+main:      about to enter loop
+generator: begin
+generator: about to yield 0
+main:      inside loop. value = 0
+generator: resumed. i = 0
+generator: about to yield 1
+main:      inside loop. value = 1
+generator: resumed. i = 1
+generator: about to yield 2
+main:      inside loop. value = 2
+generator: resumed. i = 2
+generator: end
+main:      end</span>
+<!--
+
+<span class="prompt">&gt;&gt;&gt;</span> g = generator()
+<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
+<span class="result">generator: begin
+generator: about to yield 0</span>
+<span class="prompt">&gt;&gt;&gt;</span> value
+<span class="result">0</span>
+<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
+<span class="result">generator: resumed. i = 0
+generator: about to yield 1</span>
+<span class="prompt">&gt;&gt;&gt;</span> value
+<span class="result">1</span>
+<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
+<span class="result">generator: resumed. i = 1
+generator: about to yield 2</span>
+<span class="prompt">&gt;&gt;&gt;</span> value
+<span class="result">2</span>
+<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
+<span class="result">generator: resumed. i = 2
+generator: end</span>
+<span class="error">Traceback (most recent call last):
+  File "&lt;input&gt;", line 1, in &lt;module&gt;
+StopIteration</span>--></pre>
+
+</div>
 
 <p>Recall that the <tt><span class="builtin">raw_input</span></tt> function
 can be used inside a <tt><span class="keyword">while</span></tt> loop to get
@@ -110,13 +231,15 @@ as follows:</p>
 <span class="prompt">&gt;&gt;&gt;</span> x = get_commands()
 <span class="prompt">&gt;&gt;&gt;</span> x
 <span class="result">&lt;generator object get_commands at 0x10d504730&gt;</span>
-<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">next</span>(x)
+<span class="prompt">&gt;&gt;&gt;</span> c = <span class="builtin">next</span>(x)
 <span class="result">Command: </span>Simon says jump
+<span class="prompt">&gt;&gt;&gt;</span> c
 <span class="result">'simon says jump'</span>
-<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">next</span>(x)
+<span class="prompt">&gt;&gt;&gt;</span> c = <span class="builtin">next</span>(x)
 <span class="result">Command: </span>Sit
-<span class="result">sit'</span>
-<span class="prompt">&gt;&gt;&gt;</span> <span class="builtin">next</span>(x)
+<span class="prompt">&gt;&gt;&gt;</span> c
+<span class="result">'sit'</span>
+<span class="prompt">&gt;&gt;&gt;</span> c = <span class="builtin">next</span>(x)
 <span class="result">Command: </span>q
 <span class="error">Traceback (most recent call last):
   File "&lt;input&gt;", line 1, in &lt;module&gt;
