@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Inheritance Tutorial</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 8 Tutorial: Inheritance</h1>
+
+<h2>TODO: Intro level task</h2>
+
+<p>
+TODO: Intro task goes here
+</p>
+
+<h2>Webcrawling</h2>
+
+<p>
+If you're building a search engine, you need to start by having a list of all
+webpages on the Internet. The simple way to find webpages is to start with a
+known webpage, and follow all the links to different pages, and repeating the
+procedure on those webpages. (This method is called
+<a href="http://en.wikipedia.org/wiki/Web_crawler" class="foo">Web crawling</a>,
+since it is akin to the way a spider crawls along its web.)
+</p>
+
+<p>
+For this task, we will write a program which takes a URL for a webpage, and
+finds all links on that page. To do this, we'll need to learn a bit about HTML,
+and the Python <a href="http://docs.python.org/2/library/htmlparser.html">HTMLParser</a>.
+</p>
+
+<div class="important">
+<b>HTML Basics</b>
+<p>
+In HTML, text is annotated with <em>tags</em>, which affect the way the text is
+displayed. For example, to make text appear in <strong>bold face</strong>, we
+put it inside <tt>&lt;strong&gt;</tt> tags. To see more tags, view the source of
+this webpage in your browser.
+</p>
+
+<p>
+Tags can also have attributes; attributes have a name and a value. For
+example, the tag <tt>&lt;img src="img/spam.jpg" alt="Spam"&gt;</tt> is an
+<tt>img</tt> tag with the two attributes <tt>src="img/spam.jpg"</tt> and
+<tt>alt="Spam"</tt>.
+</p>
+
+<p>
+Of particular interest to us is the <a href="http://www.w3schools.com/tags/tag_a.asp"><tt>a</tt> tag</a>, which describes a link. The
+URL to be linked is put in the attribute called <tt>href</tt>. This HTML document
+contains multiple <a target="_blank" href="http://example.com/">examples</a>
+of this.
+</p>
+</div>
+
+<div class="important">
+<b>HTMLParser</b>
+
+<p>
+Python contains a library called <tt>HTMLParser</tt> which can help interpret
+HTML text. The <tt>HTMLParser</tt> class has a method <tt>feed</tt>, which takes
+a string. For each HTML tag within the string, the class calls its own
+<tt>handle_starttag</tt> method. By default, this method does nothing, but
+subclasses can overwrite that behaviour.
+</p>
+</div>
+
+<p>
+Start with the sample code below (available as
+<a href="week8_webcrawler.py" class="foo">week8_webcrawler.py</a>). The function
+<tt>find_links</tt> takes a URL (for example, the URL of this webpage), and
+calls the <tt>feed</tt> method of a <tt>LinkParser</tt> class (which has not yet
+been defined).
+</p>
+
+<pre>
+<span class="keyword">from</span> HTMLParser <span class="keyword">import</span> HTMLParser
+<span class="keyword">import</span> urllib2
+
+<span class="comment"># TODO: write your solution here</span>
+<span class="keyword">class</span> <span class="classordef">LinkParser</span>(...):
+    ...
+
+<span class="keyword">def</span> <span class="classordef">find_links</span>(url):
+    <span class="string">"""Return a list of links from the given webpage"""</span>
+    <span class="comment"># Open the webpage and read the HTML text</span>
+    fd = urllib2.urlopen(url)
+    text = fd.read()
+    fd.close()
+
+    <span class="comment"># Create a parser instance and feed it the text</span>
+    parser = LinkParser()
+    parser.feed(text)
+
+    <span class="comment"># TODO: write your solution here</span>
+</pre>
+
+<p>Make the following modifications to this code:</p>
+
+<ol><li>
+<p>
+Write a class <tt>LinkParser</tt> which inherits from <tt>HTMLParser</tt>, and
+write a method <tt>handle_starttag(self, tag, attrs)</tt> which prints out the
+two parameters <tt>tag</tt> and <tt>attrs</tt>. Run the code and determine what
+the code is doing, and what values are being given to <tt>handle_starttag</tt>
+when it is called. Discuss with others at your table, or with a tutor.
+</p>
+</li>
+
+<li>
+<p>
+Modify the <tt>handle_starttag</tt> method to print out the <tt>href</tt> attribute
+of every link (<tt>a</tt> tag) within the HTML text.
+</p>
+</li>
+
+<li>
+<p>
+Modify the class so that it stores a list of URLs, and modify the
+<tt>handle_starttag</tt> method so that it adds the linked URLs into the list.
+Add a method <tt>get_urls</tt> which returns this list, and use that method in
+the return value of <tt>find_links</tt>.
+</p>
+</li>
+</ol>
+
+<p>
+An example of the finished code is as follows:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> find_links(<span class="string">'<script type="text/javascript">
+document.write(location.href); /* because I don't actually know what the URL will be... :P */
+</script>'</span>)
+<span class="result">['http://en.wikipedia.org/wiki/Web_crawler',
+ 'http://docs.python.org/2/library/htmlparser.html',
+ 'http://www.w3schools.com/tags/tag_a.asp',
+ 'http://example.com/',
+ 'week8_webcrawler.py']</span>
+</pre>
+
+</html>
