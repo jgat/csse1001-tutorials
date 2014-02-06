@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Class Design</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 8 Tutorial: Inheritance</h1>
+
+<p>In the previous two weeks we have learnt how to define a new class, as well
+as some general pointers on designing classes. We wrote a <tt><span class="builtin">Student</span></tt> class which defines methods for getting, among other things, pieces of
+information about that Student. </p>
+
+<p>This model for a student can be adapted to modelling employees in a business.
+You have been provided with an <tt><span class="builtin">Employee</span></tt> 
+class (see the course website) that implents some basic features that may be
+useful when modelling an employee.</p>
+<p>Your task is to write a <tt><span class="builtin">Manager</span></tt> class
+that inherits from <tt><span class="builtin">Employee</span></tt> that adds or
+changes the following pieces of functionality:
+</p>
+<ul>
+    <li>Override the <tt><span class="builtin">get_vac_days</span></tt> method
+        so that the number of vacation days is 10</li>
+    <li>Create a <tt><span class="builtin">get_bonus</span></tt> method that
+        returns the manager's bonus</li>
+    <li>Override the <tt><span class="builtin">get_annual_pay</span></tt>
+        method so that it takes the manager's bonus into account</li>
+</ul>
+
+</body>
+</html>
