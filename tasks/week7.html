@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Class Design</title>
+<title>Class Design Tutorial</title>
 <link href="styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
 <h1>Week 7 Tutorial: Class Design</h1>
 
-<h2>Class Structure</h2>
-
+<!-- TODO decide what to do with this
 <p>
 A <tt><span class="builtin">class</span></tt> can be thought of as a blueprint
 for a particular type of object. All objects of a certain type have
@@ -48,9 +47,9 @@ create an instance of the Person class:
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span> peter = Student('Peter Griffin')
 <span class="prompt">&gt;&gt;&gt;</span> peter
-<span class="result"></span><__main__.Student object at 0x103961150>
+<span class="result"><__main__.Student object at 0x103961150></span>
 <span class="prompt">&gt;&gt;&gt;</span> peter.get_name()
-<span class="result"></span>'Peter Griffin'
+<span class="result">'Peter Griffin'</span>
 </pre>
 
 <p>
@@ -69,29 +68,143 @@ a list of <tt><span class="builtin">Student</span></tt>s as it's only argument
 and returns the <tt><span class="builtin">Student</span></tt> with the highest
 GPA.
 </p>
+-->
 
-<h2>Extension</h2>
+<h2>Student Modelling</h2>
 
 <p>
-Construct a simple class to model a course. This class should handle the course's
-acronym, title, teaching semester and class list. Functions should also be
-made that allow students to be added to and removed from the class list.<br>
+In this tutorial, we will write a simple program which keeps track of university
+students and the courses they take. The code below provides a starting point.
+</p>
+
+<pre>
+<span class="keyword">class</span> <span class="classordef">Student</span>(<span class="builtin">object</span>):
+    <span class="string">"""A university student"""</span>
+    <span class="keyword">def</span> <span class="classordef">__init__</span>(self, name):
+        <span class="string">"""Create a student with a name.
+
+        Constructor: Student(str)
+        """</span>
+        self._name = name
+
+    <span class="keyword">def</span> <span class="classordef">get_name</span>(self):
+        <span class="keyword">return</span> self._name
+</pre>
+
+<p>
+Modify this class so that it also stores the student number, and degree program
+(as a string). Add methods <tt>get_student_no</tt> and <tt>get_degree</tt> which
+retrieve this information, and a method <tt>set_degree</tt> which changes the
+student's degree. For example, the resulting class might behave like this:
+</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> s = Student(<span class="string">'Michael Palin'</span>, 43215678, <span class="string">'BInfTech'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> s.get_name()
+<span class="result">'Michael Palin'</span>
+<span class="prompt">&gt;&gt;&gt;</span> s.get_student_no()
+<span class="result">43215678</span>
+<span class="prompt">&gt;&gt;&gt;</span> s.get_degree()
+<span class="result">'BInfTech'</span>
+<span class="prompt">&gt;&gt;&gt;</span> s.set_degree(<span class="string">'BE'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> s.get_degree()
+<span class="result">'BE'</span>
+</pre>
+
+<p>Why might it be inappropriate to add a <tt>set_student_no</tt> method which
+modifies the student number; similar to <tt>set_degree</tt>?</p>
+
+<p>
+Next, add the following methods. For our purposes, we will assume that the student's
+name is composed of two names (first name and last name) separated by a space.
+</p>
+
+<ul>
+<li><p><tt>get_first_name</tt>, which returns the student's first name
+(e.g. <tt><span class="string">'Michael'</span></tt>)</p></li>
+
+<li><p><tt>get_last_name</tt>, which returns the student's surname
+(e.g. <tt><span class="string">'Palin'</span></tt>)</p></li>
+
+<li><p><tt>get_email</tt>, which returns the student's email address derived from
+their name (e.g. <tt><span class="string">'michael.palin@uq.net.au'</span></tt>)</p></li>
+
+<li><p><tt>__str__</tt>, which returns a string with the student's name,
+email, student number, and degree, in a format such as <br />
+<tt><span class="string">'Michael Palin (michael.palin@uq.net.au, 43215678, BE)'</span></tt></p></li>
+
+<li><p><tt>__repr__</tt>, which returns a string which looks like the Python code
+to create the object; for example, <br />
+<tt><span class="string">"Student('Michael Palin', 43215678, 'BE')"</span></tt></p></li>
+</ul>
+
+<h2>Validity Checking</h2>
+
+<p>It is important that each student in the University has a different student
+number. To ensure this, we can take a list of <tt>Student</tt> objects, and
+check that no two students have the same student number.</p>
+
+<p>Write a function <tt>check_students</tt> which takes a list of
+<tt>Student</tt> objects, and returns <tt><span class="builtin">True</span></tt>
+if they all have different student numbers, and
+<tt><span class="builtin">False</span></tt> if there are student numbers that
+have been repeated.</p>
+
+<p>Make sure you write <tt>check_students</tt> as a function,
+<strong>not</strong> a method of the <tt>Student</tt> class! For example,</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> students1 = [Student(<span class="string">'Alice A'</span>, 1, <span class="string">'BE'</span>), Student(<span class="string">'Bob B'</span>, 2, <span class="string">'BA'</span>), Student(<span class="string">'Carol C'</span>, 4, <span class="string">'BA'</span>)]
+<span class="prompt">&gt;&gt;&gt;</span> check_students(students1)
+<span class="result">True</span>
+<span class="prompt">&gt;&gt;&gt;</span> students2 = [Student(<span class="string">'Alice A'</span>, 1, <span class="string">'BE'</span>), Student(<span class="string">'Bob B'</span>, 2, <span class="string">'BA'</span>), Student(<span class="string">'Carol C'</span>, 4, <span class="string">'BA'</span>), Student(<span class="string">'Dan D'</span>, 2, <span class="string">'BInfTech'</span>)]
+<span class="prompt">&gt;&gt;&gt;</span> check_students(students2)
+<span class="result">False</span>
+</pre>
+
+<p>In the first example, all students have different student numbers (1, 2, 4).
+In the second example, Bob and Dan have the same student number (2).</p>
+
+<h2>Adding Courses</h2>
+
+<p>
+Write a class which represents a university course. The class should have
+getter methods for the course code (e.g. <tt><span class="string">'CSSE1001'</span></tt>)
+and the course name (e.g. <tt><span class="string">'Introduction to Software
+Engineering I'</span></tt>).
 </p>
 
 <p>
-Add functionality to the <tt><span class="builtin">Student</span></tt> class
+Add functionality to the <tt>Student</tt> class
 so that each instance is capable of recording the courses that a student has
-been enrolled in. You should write methods that allow you to add and remove
-a course from the student's record.<br>
-Furthermore, you will need to modify the way that grades are stored so that
-they become associated with a relevant course.<br>
-Write a function, <tt><span class="builtin">add_to_course</span></tt>, that
-takes an instance of the <tt><span class="builtin">Student</span></tt> class and
-an instance of the <tt><span class="builtin">Course</span></tt> class as
-arguments.<br>
-This function should assure that the <tt><span class="builtin">Student</span></tt>
-is noted in the <tt><span class="builtin">Course</span></tt> instance and vice-versa.
+attained a grade for. You should write the following methods in the:
 </p>
+
+<ul>
+<li><p><tt>add_grade(course, grade)</tt>, which sets the student's grade for a
+given course. If the student already has a grade for that course, then replace
+the old grade with the new one.</p></li>
+
+<li><p><tt>gpa()</tt>, which returns the student's GPA (the average of all their
+grades). (You may assume that each course carries the same weight.)</p></li>
+</ul>
+
+<p>For example,</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> s = Student(<span class="string">'Michael Palin'</span>, 43215678, <span class="string">'BE'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> csse1001 = Course(<span class="string">'CSSE1001'</span>, <span class="string">'Intro to Software Engineering'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> deco1800 = Course(<span class="string">'DECO1800'</span>, <span class="string">'Design Computing Studio I'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> s.add_grade(csse1001, 4)
+<span class="prompt">&gt;&gt;&gt;</span> s.gpa()
+<span class="result">4.0</span>
+<span class="prompt">&gt;&gt;&gt;</span> s.add_grade(deco1800, 5)
+<span class="prompt">&gt;&gt;&gt;</span> s.gpa()
+<span class="result">4.5</span>
+<span class="prompt">&gt;&gt;&gt;</span> s.add_grade(csse1001, 6) <span class="comment"># Overwrite the old grade</span>
+<span class="prompt">&gt;&gt;&gt;</span> s.gpa()
+<span class="result">5.5</span>
+</pre>
 
 </body>
 </html>
