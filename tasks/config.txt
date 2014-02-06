@@ -1,0 +1,7 @@
+[user]
+name=Homer Simpson
+email=h.simpson@nplant.com
+mobile=0412345678
+[notifications]
+email=yes
+sms=no

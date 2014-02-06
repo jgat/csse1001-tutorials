@@ -7,12 +7,8 @@
 <body>
 <h1>Week 6 Tutorial: Classes, Error Handling and I/O</h1>
 
-<h2>Dictionaries</h2>
-<p>
-A dictionary maintains a one-to-one relationship between a set of keys and
-their associated values. In other words, each unique key in a dictionary is
-associated with a corresponding value.
-</p>
+<h2>Scrabble Scoring</h2>
+<!-- TODO decide what to do with this
 <p>
 The following dictionary contains the letters from a to e as keys, with the
 associated index within the alphabet as the value.
@@ -21,7 +17,7 @@ associated index within the alphabet as the value.
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d = {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d
-<span class="result"></span> {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
+<span class="result">{'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}</span>
 </pre>
 
 <p>
@@ -31,7 +27,7 @@ to the dictionary:
 
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['e']
-<span class="result"></span>5
+<span class="result">5</span>
 </pre>
 
 <p>
@@ -43,65 +39,126 @@ not, then a new key will be created with the specified value.
 <pre>
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['e'] = 0
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['e']
-<span class="result"></span>0
+<span class="result">0</span>
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d['f'] = 10
 <span class="prompt">&gt;&gt;&gt;</span>&nbsp;d
-<span class="result"></span> {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 0, 'f': 10}
+<span class="result"> {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 0, 'f': 10}</span>
 </pre>
+-->
 
 <p>
-In the game <i>Scrabble</i> points are scored by summing the value of the
-letters in a word. The number of points assigned to each letter is dependent on
-the frequency of the that letter's occurance in standard English words. Below
-is a table that maps each letter to it's corresponding value.
+In the game <em>Scrabble</em>, points are scored by summing the value of the
+letters in a word. Different letters are assigned different values, based
+on how difficult it is to use the letter in a word. Below
+is a table that maps each letter to it's corresponding value. (Click the image
+for a larger version.)
 </p>
 
-<img src='img/ScrabbleMappings.png' alt='Scrabble Mappings'/>
+<a href="img/ScrabbleMappings.png"><img src='img/ScrabbleMappings.png' alt='Scrabble Mappings' height="250px"/></a>
+
+<ol>
+<li>
+<p>
+Download the file <a href="scrabble_scores.txt">scrabble_scores.txt</a>.
+This file contains each of the
+letters in the alphabet with their corresponding scrabble value.
+Write a function <tt>read_scores</tt> which uses this file to create a dictionary
+that maps letters to their scrabble score.
+</p>
+
+<p>Why can't we create a dictionary that does the reverse - that is,
+maps a scrabble score to the letter which gains that score?</p>
+</li>
+
+<li>
+<p>Write a function <tt>get_score(word)</tt>, that takes a string as input
+and returns the word's scrabble score. (You may assume that the input only
+consists of lowercase letters).</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> get_score(<span class="string">'quack'</span>)
+<span class="result">20</span>
+</pre>
+</li>
+</ol>
+
+<h2>Reading Configuration Files</h2>
 
 <p>
-You have been provided with a file, <tt><span class="builtin">scrabble_scores.txt</span></tt>,
-that contains each of the letters in the alphabet and the appropriate value.
-Using the file I/O methods from last week's tutorial write a function,
-<tt><span class="builtin">get_score</span></tt>, that takes a string as input
-and returns the word's scrabble score. It may help to store a mapping of letters
-to their scores in a dictionary.
+When an application has to store information about how it's configured (for
+example, a user's preferences), it can do it by writing the information to a
+file, which can later be retrieved. When reading the configuration file, the
+application must translate the file into a suitable format, such as a dictionary.
 </p>
 
 <p>
-You have been provided with another file, <tt><span class="builtin">user_config.txt</span></tt>.
-This file stores user data in the following form:
+Download the file <a href="config.txt">config.txt</a>, which contains the following:
 </p>
 
 <pre>
-<span class="result"></span>[user]
-<span class="result"></span>name=Homer
-<span class="result"></span>email=h.simpson@nplant.com
-<span class="result"></span>mobile=0412345678
-<span class="result"></span>[notifications]
-<span class="result"></span>email=yes
-<span class="result"></span>sms=no
+[user]
+name=Homer Simpson
+email=h.simpson@nplant.com
+mobile=0412345678
+[notifications]
+email=yes
+sms=no
 </pre>
 
 <p>
-This data can be parsed into the following dictionary:
+In this format, each piece of data has a name (e.g. <tt>email</tt>) and a value
+(e.g. <tt>h.simpson@nplant.com</tt>). The names/values are grouped under a
+heading (such as <tt>user</tt> or <tt>notifications</tt>).
+Each line in the file contains either a heading (surrounded by <tt>[]</tt> brackets),
+name/value pair (separated by an <tt>=</tt>).
+</p>
+
+<p>
+Write a function <tt>read_config</tt> which takes a configuration file such as
+this, and returns a dictionary representation of the data, as in this example:
 </p>
 
 <pre>
-<span class="result"></span>{'user': {'name': 'Home', 'email': 'h.simpson@nplant.com'},
-'notification settings': {'email': 'yes', 'sms': 'no'}}
+<span class="prompt">&gt;&gt;&gt;</span> read_config(<span class="string">'config.txt'</span>)
+<span class="result">{'user': {'name': 'Homer Simpson',
+          'email': 'h.simpson@nplant.com',
+          'mobile': '0412345678'},
+ 'notifications': {'email': 'yes', 'sms': 'no'}}</span>
 </pre>
 
 <p>
-Write a function, <tt><span class="builtin">parse_data</span></tt>, that will
-perform this operation.
+Also write a function <tt>get_value</tt> which takes the above dictionary, and
+the dot-separated name of a setting (e.g. 'user.mobile'), and returns the
+appropriate value ('0412345678' in this case). It is safe to assume the inputs
+are valid.
 </p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> config = get_config(<span class="string">'config.txt'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> get_value(config, <span class="string">'user.mobile'</span>)
+<span class="result">'0412345678'</span>
+<span class="prompt">&gt;&gt;&gt;</span> get_value(config, <span class="string">'notifications.email'</span>)
+<span class="result">'yes'</span>
+</pre>
+</li>
 
 <p>
-Given the above dictionary, and the name of a dot-separated config setting
-(e.g. 'user.name'), return the appropriate value ('Homer' in this case). It is
-safe to assume that the name of config settings do not contain a '.'.
+Modify your <tt>read_config</tt> function so that it raises a
+<tt><span class="builtin">ValueError</span></tt> if the file is invalid; that is,
+if the file contains a line which does not look like
+<tt>[...]</tt> or <tt>...=...</tt>, or if the file contains any name/value pairs
+before the first heading. You may wish to test your code on the following files:
+<a href="bad_config1.txt">bad_config1.txt</a>,
+<a href="bad_config2.txt">bad_config2.txt</a>.
 </p>
 
+
+<p>Throughout this exercise, it is safe to assume that the headings/names/values
+in the file do not contain the characters <tt>[ ] =</tt>, and that the
+headings/names do not contain '<tt>.</tt>'
+</p>
+
+<!-- TODO decide what to do with this
 <h2>Errors and Exceptions</h2>
 
 <p>
@@ -156,9 +213,6 @@ has been provided below:
 <span class="result"></span>TypeError: The input was not a string.
 </pre>
 
-<p>
-Using this knowledge, extend your <tt><span class="builtin">parse_data</span></tt> function so that it caters for incorrectly formatted configuration files. For example, a line
-that does not match the syntax <tt><span class="builtin">[...]</span></tt> or <tt><span class="builtin">...=...</span></tt> should raise a <tt><span class="builtin">ValueError</span></tt>.
-</p>
+-->
 </body>
 </html>
