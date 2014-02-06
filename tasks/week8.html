@@ -7,13 +7,15 @@
 <body>
 <h1>Week 8 Tutorial: Inheritance</h1>
 
+<h2>Managing Employees</h2>
+
 <p>In the previous two weeks we have learnt how to define a new class, as well
 as some general pointers on designing classes. We wrote a <tt><span class="builtin">Student</span></tt> class which defines methods for getting, among other things, pieces of
 information about that Student. </p>
 
 <p>This model for a student can be adapted to modelling employees in a business.
-You have been provided with an <tt><span class="builtin">Employee</span></tt> 
-class (see the course website) that implents some basic features that may be
+The file <a href="week8_employees.py">week8_employees.py</a> contains an
+<tt>Employee</tt>  class that implents some basic features that may be
 useful when modelling an employee.</p>
 <p>Your task is to write a <tt><span class="builtin">Manager</span></tt> class
 that inherits from <tt><span class="builtin">Employee</span></tt> that adds or
@@ -147,7 +149,8 @@ An example of the finished code is as follows:
 <span class="prompt">&gt;&gt;&gt;</span> find_links(<span class="string">'<script type="text/javascript">
 document.write(location.href); /* because I don't actually know what the URL will be... :P */
 </script>'</span>)
-<span class="result">['http://en.wikipedia.org/wiki/Web_crawler',
+<span class="result">['week8_employees.py',
+ 'http://en.wikipedia.org/wiki/Web_crawler',
  'http://docs.python.org/2/library/htmlparser.html',
  'http://www.w3schools.com/tags/tag_a.asp',
  'http://example.com/',
