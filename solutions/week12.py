@@ -1,29 +1,42 @@
-def uniquify(items):
+def uniqify(items):
     result = []
     for x in items:
         if x not in result:
             result.append(x)
     return result
 
-def uniquify2(items):
+def uniqify2(items):
     result = []
     for x in sorted(items):
         if result == [] or x != result[-1]:
             result.append(x)
     return result
 
-def uniquify3(items):
+def uniqify3(items):
     return dict.fromkeys(items).keys()
 
-#print uniquify([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
-#print uniquify2([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
-#print uniquify3([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
+#print uniqify([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
+#print uniqify2([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
+#print uniqify3([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
 
 import random
 import timeit
 
-N = 100000
-items = [random.randint(0,N) for i in xrange(N)]
-print "uniquify3:", min(timeit.repeat('uniquify3(items)', 'from __main__ import uniquify3, items', number=100))/100, 'seconds'
-print "uniquify2:", min(timeit.repeat('uniquify2(items)', 'from __main__ import uniquify2, items', number=100))/100, 'seconds'
-print "uniquify:", min(timeit.repeat('uniquify(items)', 'from __main__ import uniquify, items', number=1)), 'seconds'
+# TODO: work in progress - calibrate parameters
+
+def test(function_name, size, repeat, number):
+    stmt = "{0}(xrange({1}))".format(function_name, size)
+    setup = "from __main__ import {0}".format(function_name)
+    return min(timeit.repeat(stmt, setup, repeat=repeat, number=number)) / number
+
+print test('uniqify', 5000, 10, 1)
+print test('uniqify', 10000, 10, 1)
+print test('uniqify', 20000, 10, 1)
+
+print test('uniqify2', 50000, 10, 1)
+print test('uniqify2', 100000, 10, 1)
+print test('uniqify2', 200000, 10, 1)
+
+print test('uniqify3', 50000, 10, 1)
+print test('uniqify3', 100000, 10, 1)
+print test('uniqify3', 200000, 10, 1)

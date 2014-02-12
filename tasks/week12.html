@@ -7,7 +7,7 @@
 <body>
 <h1>Week 12 Tutorial: Complexity</h1>
 
-<h2>Uniquify</h2>
+<h2>Uniqify</h2>
 
 <p>
 For this task, we want to write a function which removes duplicates from a
@@ -18,11 +18,11 @@ it.
 <ol>
 <li>
 <p>
-Write a function <tt>uniquify(items)</tt> which takes a list, and returns a
+Write a function <tt>uniqify(items)</tt> which takes a list, and returns a
 list containing each element of <tt>items</tt> without repeats. For example,
 </p>
 <pre>
-<span class="prompt">&gt;&gt;&gt;</span> uniquify([8, 3, 5, 8, 9, 4, 5, 2, 3, 5])
+<span class="prompt">&gt;&gt;&gt;</span> uniqify([8, 3, 5, 8, 9, 4, 5, 2, 3, 5])
 <span class="result">[8, 3, 5, 9, 4, 2]</span>
 </pre>
 <p>
@@ -36,7 +36,7 @@ number of 'steps' of computation the function requires to finish (in terms of
 <li>
 <p>
 Discuss how the complexity could be improved if the <tt>items</tt> list was
-sorted to begin with. Write a function <tt>uniquify2</tt> which removes
+sorted to begin with. Write a function <tt>uniqify2</tt> which removes
 duplicates from a list, by first sorting the list.
 Note: the order of elements in the output list is unimportant, as long as each
 appears only once.
@@ -47,12 +47,12 @@ Hint: <tt><span class="builtin">sorted</span>(items)</tt> will give a copy of
 O(n log n) time.
 </p>
 <pre>
-<span class="prompt">&gt;&gt;&gt;</span> uniquify2([8, 3, 5, 8, 9, 4, 5, 2, 3, 5])
+<span class="prompt">&gt;&gt;&gt;</span> uniqify2([8, 3, 5, 8, 9, 4, 5, 2, 3, 5])
 <span class="result">[2, 3, 4, 5, 8, 9]</span>
 </pre>
 <p>
 Then, repeat the same analysis as above to determine the computational
-complexity of <tt>uniquify2</tt>, in terms of the length of the input list
+complexity of <tt>uniqify2</tt>, in terms of the length of the input list
 ('<tt>n</tt>').
 </p>
 </li>
@@ -60,7 +60,7 @@ complexity of <tt>uniquify2</tt>, in terms of the length of the input list
 <li>
 <p>
 In this course, we have already encountered a data type which contains a notion
-of 'uniqueness'. Discuss how to use this to write a function <tt>uniquify3</tt>
+of 'uniqueness'. Discuss how to use this to write a function <tt>uniqify3</tt>
 which does the same task, with a better time complexity. Then, write such a
 function, and determine its complexity.
 </p>
@@ -69,13 +69,13 @@ function, and determine its complexity.
 <li>
 <p>
 Is it possible to solve this task with a faster time complexity than in
-<tt>uniquify3</tt>? Justify your answer.
+<tt>uniqify3</tt>? Justify your answer.
 </p>
 </li>
 </ol>
 
 <p>
-The following code snippet will run the three <tt>uniquify</tt> functions
+The following code snippet will run the three <tt>uniqify</tt> functions
 multiple times on a large input, and measure the running time. Copy-paste the
 code in a source file containing the three function definitions, and run it.
 It may take a few minutes to finish, so move on to the next task while you're
@@ -88,10 +88,19 @@ waiting.
 
 N = 100000
 items = [random.randint(0,N)<span class="keyword"> for </span>i<span class="keyword"> in </span><span class="builtin">xrange</span>(N)]
-<span class="keyword">print</span> <span class="string">"uniquify3:"</span>, min(timeit.repeat(<span class="string">'uniquify3(items)'</span>, <span class="string">'from __main__ import uniquify3, items'</span>, number=100))/100, <span class="string">'seconds'</span>
-<span class="keyword">print</span> <span class="string">"uniquify2:"</span>, min(timeit.repeat(<span class="string">'uniquify2(items)'</span>, <span class="string">'from __main__ import uniquify2, items'</span>, number=100))/100, <span class="string">'seconds'</span>
-<span class="keyword">print</span> <span class="string">"uniquify:"</span>, min(timeit.repeat(<span class="string">'uniquify(items)'</span>, <span class="string">'from __main__ import uniquify, items'</span>, number=1)), <span class="string">'seconds'</span>
+<span class="keyword">print</span> <span class="string">"uniqify3:"</span>, min(timeit.repeat(<span class="string">'uniqify3(items)'</span>, <span class="string">'from __main__ import uniqify3, items'</span>, number=100))/100, <span class="string">'seconds'</span>
+<span class="keyword">print</span> <span class="string">"uniqify2:"</span>, min(timeit.repeat(<span class="string">'uniqify2(items)'</span>, <span class="string">'from __main__ import uniqify2, items'</span>, number=100))/100, <span class="string">'seconds'</span>
+<span class="keyword">print</span> <span class="string">"uniqify:"</span>, min(timeit.repeat(<span class="string">'uniqify(items)'</span>, <span class="string">'from __main__ import uniqify, items'</span>, number=1)), <span class="string">'seconds'</span>
 </pre>
+
+<div class="aside">
+<b>Aside: Sets</b>
+<p>If the data in our collection must be unique, then lists are not the most
+optimal type to use. Python offers a data type called a
+<a href="http://docs.python.org/2/library/stdtypes.html#set-types-set-frozenset">set</a>,
+where every element is unique. Sets behave similarly to dictionaries, but without
+having a 'value' associated with each unique element.</p>
+</div>
 
 <h2>Past Exam Practice</h2>
 

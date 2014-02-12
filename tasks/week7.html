@@ -127,7 +127,9 @@ name is composed of two names (first name and last name) separated by a space.
 (e.g. <tt><span class="string">'Palin'</span></tt>)</p></li>
 
 <li><p><tt>get_email</tt>, which returns the student's email address derived from
-their name (e.g. <tt><span class="string">'michael.palin@uq.net.au'</span></tt>)</p></li>
+their name (e.g. <tt><span class="string">'michael.palin@uq.net.au'</span></tt>).
+For this exercise, it is safe to assume the student's email is always in the format
+<tt>firstname.lastname@uq.net.au</tt>.</p></li>
 
 <li><p><tt>__str__</tt>, which returns a string with the student's name,
 email, student number, and degree, in a format such as <br />
@@ -205,6 +207,22 @@ grades). (You may assume that each course carries the same weight.)</p></li>
 <span class="prompt">&gt;&gt;&gt;</span> s.gpa()
 <span class="result">5.5</span>
 </pre>
+
+<div class="extra">
+<b>Extension: Going Further</b>
+
+<p>It is clear that our model of students and courses is still incomplete.
+Consider further extensions that can be made, and implement them. Possible
+improvements include:</p>
+<ul>
+<li>storing courses a student is currently taking within the <tt>Student</tt> class,</li>
+<li>accessing a list of students enrolled in a course,</li>
+<li>storing the semester in which students took a course, or</li>
+<li>allowing for courses with different unit weightings in GPA calculation.</li>
+</ul></p>
+<p>As part of this process, you will need to consider which classes to alter,
+and which methods to add.</p>
+</div>
 
 </body>
 </html>
