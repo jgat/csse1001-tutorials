@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>GUIs (II)</title>
+<link href="styles.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<h1>Week 10 Tutorial: GUIS (II)</h1>
+
+<p>Last week we created a GUI that was capable of accepting user input in the
+form of button presses and entered text and responding to that input.  
+More complex behaviour can be included in your applications by binding methods
+to  events. An event binding is a way of responding to user input. For example,
+the code you wrote last week which ran when a button was clicked was
+responding to the click event on  that button.
+An event binding may be created using the bind method of a widget. 
+The support code for this tutorial sets up the GUI shown to the right, but
+without any functionality.
+This code has bound the &lt;Motion&gt; event of the canvas to the evt_motion
+method.</p>
+
+<p>This event method takes an event as its second argument. Use the .x and .y
+attributes of this event to update the label with the current cursor
+position.</p>
+
+
+<p>The Tkinter Canvas widget can be used to draw custom interfaces on the
+screen. Event bindings such as &lt;Motion&gt;, for movement of the mouse, and
+&lt;Button-1&gt;, for a left click, are useful in doing this, as they can give
+the current position of the mouse. To draw on the canvas, we can use the
+various create_* methods of the Canvas. We can get a list of these by searching
+though the output of dir(Canvas):</p>
+<pre>
+<span class="prompt"></span>&gt;&gt;&gt; [x for x in dir(Canvas) if 'create' in x]
+<span class="result"></span>['_create', 'create_arc', 'create_bitmap', 'create_image',
+'create_line', 'create_oval', 'create_polygon', 'create_rectangle',
+'create_text', create_window']
+</pre>
+</p>
+
+<p>
+If we want to create a line on the Canvas, for example, the <tt><span class="builtin">create_line</span></tt> method sounds pretty good:</p>
+<pre>
+<span class="prompt"></span>&gt;&gt;&gt; help(Canvas.create_line)
+<span class="result"></span>create_line(self, *args, **kw) unbound Tkinter.Canvas method
+        Create  line with coordinates x1,y1,...,xn,yn.
+</pre>
+<p>So to create a line on self.canvas that goes from (0, 0) to (100, 100), we
+would use: <tt><span class="builtin">self.canvas.create_line(0, 0, 100, 100)</span></tt>
+</p>
+
+<p>Use the &lt;Button-1&gt; binding on self.canvas to create a line between two
+consecutive points that the user clicks on the canvas.<br>
+You may wish to: (i) keep track of where the user last clicked; and (ii) keep
+track of whether you're in the process of drawing a line at any given time.</p>
+
+<p>Now we are going to implement some additional functionality to our drawing
+application. After completing the last task it is now possible to draw lines
+on the canvas. However, a user who is not aware of this doesn't have any visual
+cue that a line is being created.</p>
+<p>Firstly show a preview of the line that will
+be created. More specifically, after clicking once, a line should be drawn from
+the point the user clicked on to the current location of the mouse. When the
+user clicks again, this preview line should become a permanent fixture on the
+canvas. In order to do this, you will have to remove the preview line from the
+canvas each time the mouse moves. The easiest way to do this is to completely
+clear the canvas, using the below code, and then redraw all the objects we want
+to stay fixed: <tt><span class="builtin">self.canvas.delete(ALL)</span></tt></p>
+
+<p>People are able to interact further with applications through menus.
+Thankfully Tkinter has a menu widget that can be applied similarly to the other
+widgets you have experienced thus far. The following is an example of how you
+could implement a menu item to print 'Hello!' to IDLE:</p>
+<pre>
+<span class="prompt"></span>from Tkinter import *
+<br>
+<span class="prompt"></span>root = Tk()
+<br>
+<span class="prompt"></span>def hello():
+<span class="prompt"></span>&nbsp;&nbsp;&nbsp;&nbsp;print 'Hello!'
+<br>
+<span class="prompt"></span>menubar = Menu(root)
+<span class="prompt"></span>menubar.add_command(label='Say Hello', command = hello)
+<br>
+<span class="prompt"></span>root.config(menu = menubar)
+</pre>
+
+<p>Cascading menus can be constructed using the constructor
+<tt><span class="builtin">Menu(parent, tearoff = 0)</span></tt> (where
+<i>parent</i> is the parent menu) and adding commands as before using the
+<tt><span class="builtin">add_command</span></tt> method. Finally, the
+<tt><span class="builtin">add_cascade</span></tt> method is used to attach
+the menu to it's parent.</p>
+
+<p>Add a cascading menu to your application that allows you to set the colour
+of the line to either red, blue, green or black. You should also add a menu
+item that allows you to exit the application.</p>
+
+</body>
+</html>
