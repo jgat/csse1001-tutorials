@@ -21,7 +21,7 @@ Frame widget a container for other widgets, and so on.</p>
 manager. We will be using the pack geometry manager. It's probably easiest to
 think about pack as creating 'stacks' of widgets.</p>
 <p>When you pack a widget, you tell Tkinter which side of the window you want
-to place it against. The ﬁrst widget packed to a particular side is placed
+to place it against. The first widget packed to a particular side is placed
 right against that edge of the window. Subsequent widgets are packed up
 against this one.</p>
 
@@ -71,13 +71,14 @@ label's master.</p>
 <p>Each widget is drawn inside of its master. When we pack a widget, it is
 packed inside and with respect to this master. What this means is that when we
 pack the widget with, say, side=TOP, it from the top of this master widget.</p>
-<p>The example on the right has three levels of the master-parent relationship.
+<p>The example below has three levels of the master-parent relationship.
 This first is the App, which represents the entire window. The second is the
 HelloWorld class from the previous exercise (which inherited from Frame). This
 is packed inside the App. Inside the HelloWorld class is a label and a frame
 which itself contains two buttons and a spinbox.<p>
-<p>Your task is to reproduce this display based on your code from the previous
-exercise.</p>
+<img src="img/Week9_sample_display.jpg" alt="Sample Display"/>
+<p>Your task is to modify the original HelloWorld class to reproduce this
+display.</p>
 
 <h2>Interacting with Widgets</h2>
 <p>You will often want to interact with widgets after you have created them.
@@ -99,6 +100,7 @@ input. For example, to get the contents of a textbox, you can use the
 displays the interface shown in the image below. It should change the colour
 of the label text and the associated label strings to any valid colour the user
 inputs in the Entry.</p>
+<img src="img/Week9_text_colouring.jpg" alt="Text Colouring Example"/>
 
 <h2>Message Boxes in Tkinter</h2>
 <p>Occasionally a user will interact with a program in a way that requires
