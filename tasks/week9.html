@@ -36,6 +36,17 @@ of the label, as follows (and similarly for the 'Green' button):
 
 TODO screenshot
 
+<div class="important">
+<b>Hint:</b>
+
+<p>Use packing options, such as <tt>anchor</tt>, <tt>expand</tt>,
+<tt>fill</tt>, and <tt>padx/pady/ipadx/ipady</tt>, to achieve the desired
+layout. You may also need to use frames.</p>
+
+<p>Use the <tt>.config</tt> method to modify the text and colour (<tt>bg</tt>
+for background colour) of the Label.</p>
+</div>
+
 <h2>What... is Your Favourite Colour?</h2>
 
 <p>
@@ -73,10 +84,6 @@ error box appears, for example:
 
 TODO screenshot
 
-<p>
-(Hint: if a colour is invalid, Python will raise a <tt>TclError</tt>.)
-</p>
-
 <div class="important">
 <b>Hint: Tkinter Error Messages</b>
 
@@ -86,6 +93,8 @@ First, import <tt>tkMessageBox</tt>, then
 <tt>tkMessageBox.showerror(<span class="string">"title"</span>, <span class="string">"message"</span>)</tt>
 will display an error box with the given title and message.
 </p>
+
+<p>If a colour is invalid, Python will raise a <tt>TclError</tt>.</p>
 </div>
 
 </body>
