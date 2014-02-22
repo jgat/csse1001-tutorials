@@ -1,123 +1,92 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Introduction to GUI Design</title>
+<title>GUI Design Tutorial 1</title>
 <link href="styles.css" rel="stylesheet" type="text/css"/>
 </head>
 <body>
-<h1>Week 9 Tutorial: Introduction to GUI Design</h1>
+<h1>Week 9 Tutorial: GUI Design 1</h1>
 
-<h2>Background Information</h2>
-<p>If you are writng a program that is going to be used by other people, then you will most 
-likely want to include a GUI (graphical user interface). Python ships with a GUI toolkit known
-as Tkinter; this is what IDLE is written in.</p>
-<p>In this course, we will use Tkinter to introduce you to the basics of GUI design.
-An excellent resource on this toolkit can be found at <a href='http://effot.org/tkinterbook/'>http://effot.org/tkinterbook/</a>.</p>
-<p>An interface in Tkinter is built from a collection of widgets. Each widget
-is a Tkinter class that is designed for a specific purpose: the Button widget
-is a standard button, the Label widget a tool for displaying static text, the
-Frame widget a container for other widgets, and so on.</p>    
-<p>These widgets are arranged on-screen through what is known as a geometry
-manager. We will be using the pack geometry manager. It's probably easiest to
-think about pack as creating 'stacks' of widgets.</p>
-<p>When you pack a widget, you tell Tkinter which side of the window you want
-to place it against. The first widget packed to a particular side is placed
-right against that edge of the window. Subsequent widgets are packed up
-against this one.</p>
+<h2>Blue And Green</h2>
 
-<h2>Displaying a Widget</h2>
-<p>There are two steps in creating a GUI widget in Tkinter. Firstly, the widget
-itself must be created, as an instance of the appropriate class. Any
-configuration information information relevant to the widget, such as the text
-it should display or the callback function it should run when interacted with,
-is given here as a keyword argument.<br>For example, this is how one might
-choose to create an instance of the Button widget:</p>
-<pre>
-<span class="prompt"></span>btn = Button(self, text="I'm a button", command=self.print_hello)
-</pre>
-<p>Secondly, the widget itself must be <i>packed</i>. Keyword arguments to the
-pack method control how and where the widget is displayed on the screen. These arguments should never be given to the class directly, as some online examples won't do.<br>
-Packing the Button widget can be done like so:</p>
-<pre>
-<span class="prompt"></span>btn.pack(side=TOP)
-</pre>
-<p>It is possible to position the widgets with more precision by making use of the anchor
-keyword arguments. Widgets can be anchored to compass directions (e.i. N, S, E and W).
-For example, the following code would pack btn in the top left (provided it was
-the first widget to be packed):
-<pre>
-<span class="prompt"></span>btn.pack(side=TOP, anchor=N)
-</pre>
-<p>You have been provided with a simple
-<tt><span class="builtin">HelloWorld</span></tt> interface (see the course website).
-You will be able to observe a button, a label and a spinbox in this example.
-The button, when pressed, will print 'Hello!' in IDLE. The spinbox has four
-values: 'I', 'am', 'a' and 'Spinbox'.
-<p>Your job is to add another button to the interface, below the spinbox. This
-button should be anchored to the right hand side of the window, should read
-'Button 2' and should print 'Hello again!' when clicked.</p>
+<p>
+In this week's tutorial, we will build a small application which has a
+<tt>Label</tt> and some commands to change the colour of the label.
+</p>
 
-<h2>Frames</h2>
-<p>It's not very satisfactory to just stack widgets from the top, bottom or
-side of the screen; such an approach lacks flexibility (for example, to place
-two buttons side-by-side beneath a label).</p>
-<p>We can overcome this limitation by creating frames to store widgets in, and
-then arranging these frames and their component widgets appropriately using
-pack.</p>
-<p>Every widget in Tk has the concept of a master. You may have noticed that
-when we created the buttons and labels in the previous example, the first
-argument we provided to their contructor was self. This is the button or
-label's master.</p>
-<p>Each widget is drawn inside of its master. When we pack a widget, it is
-packed inside and with respect to this master. What this means is that when we
-pack the widget with, say, side=TOP, it from the top of this master widget.</p>
-<p>The example below has three levels of the master-parent relationship.
-This first is the App, which represents the entire window. The second is the
-HelloWorld class from the previous exercise (which inherited from Frame). This
-is packed inside the App. Inside the HelloWorld class is a label and a frame
-which itself contains two buttons and a spinbox.<p>
-<img src="img/Week9_sample_display.jpg" alt="Sample Display"/>
-<p>Your task is to modify the original HelloWorld class to reproduce this
-display.</p>
+<p>
+Download the file <a href="week9.py">week9.py</a>, which contains code to
+run a simple application which greets the user when they click the button.
+Run this code and examine how it works. Modify this code to show the following
+layout:
+</p>
 
-<h2>Interacting with Widgets</h2>
-<p>You will often want to interact with widgets after you have created them.
-For example, you often need to change the text that is displayed in a Label, or
-get information that a user has entered in an Entry (textbox).</p>
-<p>It is possible to reconfigure tany property of a Tk widget by using the
-<tt><span class="builtin">configure</span></tt> method. This method accepts the
-same keyword arguments as the constructor for a widget. For example, the
-following code will change the text of the label
-<tt><span class="builtin">self._lbl</span></tt>.</p>
-<pre>
-<span class="prompt"></span>self._lbl.configure(text="I've been changed!")
-</pre>
-<p>Controls that accept user input will define methods for accessing that
-input. For example, to get the contents of a textbox, you can use the
-<tt><span class="builtin">Entry.get</span></tt> method.</p>
-<p>Create a new class which inherits from
-<tt><span class="builtin">Frame</span></tt> (as HelloWorld did) and which
-displays the interface shown in the image below. It should change the colour
-of the label text and the associated label strings to any valid colour the user
-inputs in the Entry.</p>
-<img src="img/Week9_text_colouring.jpg" alt="Text Colouring Example"/>
+TODO screenshot
 
-<h2>Message Boxes in Tkinter</h2>
-<p>Occasionally a user will interact with a program in a way that requires
-a pop-up message box. This can be achieved in Tkinter by using the
-<tt><span class="builtin">tkMessageBox</span></tt> module. For now, we will
-only concern ourselves with the module's <tt><span class="builtin">showerror()</span></tt>
-function. The call required to obtain an error message box is of the form:
-<pre>
-<span class="prompt"></span>import tkMessageBox
-<span class="prompt"></span>tkMessageBox.showerror(title, message [, options])
-</pre>
-The title and message arguments dictate the text that will appear in the
-error box.</p>
+<p>
+Note that there should be a vertical padding of 10 pixels around the buttons.
+If the user increases the window size, the buttons should stay at the bottom,
+and the label should stay rougly in the centre of the window.
+</p>
 
-<p>Using your code from the previous exercise as a foundation, add functionality
-that will display an error message box if no text has been entered into the
-Entry widget when the 'Change Colour' button is pressed.</p> 
+<p>
+Next, modify the class so that clicking the buttons modify the text and colour
+of the label, as follows (and similarly for the 'Green' button):
+</p>
+
+TODO screenshot
+
+<h2>What... is Your Favourite Colour?</h2>
+
+<p>
+We will now expand the program to allow the user to enter their own choice of
+colour. Modify the program to show the following layout:
+</p>
+
+TODO screenshot
+
+<p>
+Note that the 10 pixel vertical padding has been removed from the two buttons,
+and there is a 10 pixel padding around all four sides of the bottom row. If the
+user increases the window size, the <tt>Entry</tt> widget should grow
+horizontally.
+</p>
+
+<p>
+Next, modify the class so that the 'Change it!' button changes the colour and
+text of the label based on the text in the entry widget. For example,
+</p>
+
+TODO screenshot
+
+<p>
+(Try some of <a href="http://www.tcl.tk/man/tcl8.5/TkCmd/colors.htm#M3">these
+colours</a> in your program!)
+</p>
+
+<h2>That's Not a Colour!</h2>
+
+<p>
+Modify the program so that if the text in the entry widget isn't a colour, an
+error box appears, for example:
+</p>
+
+TODO screenshot
+
+<p>
+(Hint: if a colour is invalid, Python will raise a <tt>TclError</tt>.)
+</p>
+
+<div class="important">
+<b>Hint: Tkinter Error Messages</b>
+
+<p>
+To display an error message box, we use the <tt>tkMessageBox</tt> library.
+First, import <tt>tkMessageBox</tt>, then
+<tt>tkMessageBox.showerror(<span class="string">"title"</span>, <span class="string">"message"</span>)</tt>
+will display an error box with the given title and message.
+</p>
+</div>
 
 </body>
 </html>
