@@ -55,7 +55,7 @@ We will now expand the program to allow the user to enter their own choice of
 colour. Modify the program to show the following layout:
 </p>
 
-<center><img src="img/week9c.png" alt="" /></center>
+TODO screenshot
 
 <p>
 Note that the 10 pixel vertical padding has been removed from the two buttons,
@@ -69,7 +69,7 @@ Next, modify the class so that the 'Change it!' button changes the colour and
 text of the label based on the text in the entry widget. For example,
 </p>
 
-<center><img src="img/week9d.png" alt="" /></center>
+TODO screenshot
 
 <p>
 (Try some of <a href="http://www.tcl.tk/man/tcl8.5/TkCmd/colors.htm#M3">these
@@ -83,7 +83,7 @@ Modify the program so that if the text in the entry widget isn't a colour, an
 error box appears, for example:
 </p>
 
-<center><img src="img/week9e.png" alt="" /></center>
+TODO screenshot
 
 <div class="important">
 <b>Hint: Tkinter Error Messages</b>

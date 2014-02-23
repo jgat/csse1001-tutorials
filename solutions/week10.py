@@ -25,7 +25,6 @@ class SettingsFrame(Frame):
     def _toggle_preview(self):
         """Toggle the line preview on/off.
         """
-        # NOTE: TASK
         self._preview = not self._preview
         if self._preview:
             self._preview_btn.config(text="Preview On", bg="green")
@@ -35,13 +34,11 @@ class SettingsFrame(Frame):
     def is_preview_on(self):
         """Return True if the Preview setting is on, otherwise False.
         """
-        # NOTE: TASK
         return self._preview
 
     def set_position(self, x, y):
         """Change the 'Current Position' label to show new coordinates.
         """
-        # NOTE: Task
         self._pos_lbl.config(text="Current Position: ({}, {})".format(x, y))
 
 
@@ -75,7 +72,6 @@ class DrawingApp(object):
         menubar.add_cascade(label="Edit", menu=editmenu)
         editmenu.add_command(label="Clear All Lines", command=self.clear)
 
-        # NOTE: Task
         self._canvas.bind('<Button-1>', self.evt_click)
         self._start = None
         self._lines = []
@@ -83,7 +79,6 @@ class DrawingApp(object):
     def evt_motion(self, e):
         """Event handler for Mouse movement on the Canvas
         """
-        # NOTE: TASK
         self._settings.set_position(e.x, e.y)
 
         # Draw the preview if it should be drawn.
@@ -103,11 +98,9 @@ class DrawingApp(object):
         """Delete all lines from the application.
         """
         self._canvas.delete(ALL)
-        # NOTE: Task
         self._start = None
         self._lines = []
 
-    # NOTE: Task
     def evt_click(self, e):
         """Event handler for clicking the canvas: Draw a line
         """

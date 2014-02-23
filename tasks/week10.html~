@@ -45,8 +45,8 @@ Also write the method <tt>is_preview_on</tt> to return
 <b>Hint:</b>
 
 <p>When an mouse event occurs, the <tt>.x</tt> and <tt>.y</tt> attributes tell
-us where the mouse is; use this to configure the label. The string
-<tt>.format</tt> method could be useful to formatting the information.</p>
+us where the mouse is. The string <tt>.format</tt> method could be useful to
+formatting the information and configuring the label.</p>
 
 <p>To keep track of whether the preview option is on, create an extra boolean
 attribute of the class!</p>
