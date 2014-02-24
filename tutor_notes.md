@@ -1,6 +1,7 @@
 # CSSE1001 - Tutor Cheatsheet
 
-January 2014
+Jackson Gatenby
+February 2014
 
 ### General Notes
 
