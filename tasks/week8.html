@@ -99,6 +99,21 @@ a string. For each HTML tag within the string, the class calls its own
 <tt>handle_starttag</tt> method. By default, this method does nothing, but
 subclasses can overwrite that behaviour.
 </p>
+
+<p>
+In all the examples of inheritance we've seen, we are defining two (or more)
+classes in the same file, and have one inherit from the other. In this task,
+we will instead be inheriting from a class in another library; this works in
+exactly the same way - we write the name of the superclass (<tt>HTMLParser</tt>)
+inside <tt>()</tt> parentheses next to the class definition.
+</p>
+
+<p>
+Since we can't see the code we're inheriting from, we
+have to be extra careful when overriding methods to call the superclass method,
+including for the <tt>__init__</tt> method.
+</p>
+
 </div>
 
 <p>
@@ -156,6 +171,9 @@ Modify the class so that it stores a list of URLs, and modify the
 Add a method <tt>get_urls</tt> which returns this list, and use that method in
 the return value of <tt>find_links</tt>.
 </p>
+
+<p>(Hint: think carefully about where you should create this list, so that you
+will be able to access it again.)</p>
 </li>
 </ol>
 
