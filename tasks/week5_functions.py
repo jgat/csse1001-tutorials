@@ -1,6 +1,7 @@
 def square(x):
     return x ** 2
 
+
 def add(x, y):
     while y > 0:
         x += 1
@@ -8,6 +9,7 @@ def add(x, y):
     return x
 
 print add(3, 2)
+
 
 def get_0():
     return 0

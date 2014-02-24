@@ -15,7 +15,8 @@ class SampleApp(object):
         btnframe.pack(side=TOP)
         btn = Button(btnframe, text="Change to Blue", command=self.click_blue)
         btn.pack(side=LEFT)
-        btn = Button(btnframe, text="Change to Green", command=self.click_green)
+        btn = Button(btnframe, text="Change to Green",
+                     command=self.click_green)
         btn.pack(side=LEFT)
 
         entryfrm = Frame(master)

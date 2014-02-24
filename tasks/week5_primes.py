@@ -10,6 +10,7 @@ def is_prime(n):
         else:
             return True
 
+
 def get_primes(n):
     """Return a list of the first n primes.
 

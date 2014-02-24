@@ -37,7 +37,8 @@ class Student(object):
                                             self._no, self._degree)
 
     def __repr__(self):
-        return 'Student({0!r}, {1!r}, {2!r})'.format(self._name, self._no, self._degree)
+        return 'Student({0!r}, {1!r}, {2!r})'.format(self._name, self._no,
+                                                     self._degree)
 
     def add_grade(self, course, grade):
         self._grades[course] = grade
@@ -60,9 +61,9 @@ print "Last:   ", s.get_last_name()
 print "Email:  ", s.get_email()
 print "str:    ", str(s)
 print "repr:   ", repr(s)
-print
 
 ###############################################################################
+
 
 def check_students(students):
     seen = []
@@ -73,6 +74,7 @@ def check_students(students):
         seen.append(n)
     return True
 
+
 def check_students(students):
     # Lazier, but more computationally expensive
     for s in students:
@@ -81,20 +83,24 @@ def check_students(students):
                 return False
     return True
 
+
 def check_students2(students):
     """A variant where you raise a ValueError when invalid"""
     seen = {}
     for s in students:
         n = s.get_student_no()
         if n in seen:
-            raise ValueError(seen[n].get_name() + ' and ' + s.get_name() + ' have the same student number')
+            raise ValueError(seen[n].get_name() + ' and ' + s.get_name() +
+                             ' have the same student number')
         seen[n] = s
     return True
 
-students1 = [Student('Alice A', 1, 'BE'), Student('Bob B', 2, 'BA'), Student('Carol C', 4, 'BA')]
+students1 = [Student('Alice A', 1, 'BE'), Student('Bob B', 2, 'BA'),
+             Student('Carol C', 4, 'BA')]
 assert check_students(students1) is True
 
-students2 = [Student('Alice A', 1, 'BE'), Student('Bob B', 2, 'BA'), Student('Carol C', 4, 'BA'), Student('Dan D', 2, 'BInfTech')]
+students2 = [Student('Alice A', 1, 'BE'), Student('Bob B', 2, 'BA'),
+             Student('Carol C', 4, 'BA'), Student('Dan D', 2, 'BInfTech')]
 assert check_students(students2) is False
 
 try:
@@ -104,16 +110,19 @@ except ValueError as e:
 else:
     raise RuntimeError("that can't be right... tutors never make mistakes")
 
-################################################################################
+###############################################################################
+
 
 class Course(object):
     def __init__(self, code, name):
         self._code = code
         self._name = name
 
-    def get_code(self): return self._code
+    def get_code(self):
+        return self._code
 
-    def get_name(self): return self._name
+    def get_name(self):
+        return self._name
 
 
 csse1001 = Course('CSSE1001', 'Intro to Software Engineering')

@@ -5,14 +5,17 @@ def find_numbers(text):
             result.append(int(word))
     return result
 
+
 def find_numbers(text):
     return [int(word) for word in text.split() if word.isdigit()]
 
 ###############################################################################
 
+
 def separate_comma(s): return s.split(',')
 def separate_semicolon(s): return s.split(';')
 def separate_pipe(s): return s.split('|')
+
 
 def separate(delim):
     return lambda s: s.split(delim)
@@ -22,6 +25,7 @@ separate_semicolon = separate(';')
 separate_pipe = separate('|')
 
 ###############################################################################
+
 
 def simon_says():
     magic_word = "simon says "
@@ -52,6 +56,7 @@ def simon_says2():
             print "I do nothing"
 
 ###############################################################################
+
 
 def permutations(xs):
     if len(xs) == 1:

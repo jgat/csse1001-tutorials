@@ -1,9 +1,8 @@
 from HTMLParser import HTMLParser
 import urllib2
 
-# TODO: write your solution here
-class LinkParser(...):
-    ...
+# Write the LinkParser class here
+
 
 def find_links(url):
     """Return a list of links from the given webpage"""
@@ -15,5 +14,5 @@ def find_links(url):
     # Create a parser instance and feed it the text
     parser = LinkParser()
     parser.feed(text)
-    
-    # TODO: write your solution here
+
+    # Write a return statement here

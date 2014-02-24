@@ -8,7 +8,6 @@ name = raw_input("What is your name? ")
 print "Hello, " + name + "!"
 
 # Task 2
-
 def is_leap_year(year):
     if year % 400 == 0:
         return True

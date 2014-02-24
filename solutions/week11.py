@@ -4,10 +4,12 @@ def minimum(xs):
     if len(xs) == 1:
         return xs[0]
     else:
-        return min(xs[0], minimum(xs[1:])
+        return min(xs[0], minimum(xs[1:]))
 
+###############################################################################
 
 import os
+
 
 def list_files(directory):
     all_files = []
@@ -18,3 +20,8 @@ def list_files(directory):
         else:
             all_files.append(full_name)
     return all_files
+
+if __name__ == '__main__':
+    import pprint
+    assert minimum([2, 5, 1, 3, 4, 2]) == 1
+    pprint.pprint(list_files('..'))

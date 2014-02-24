@@ -9,6 +9,7 @@ def is_prime(n):
             return False
     return True
 
+
 def get_primes(n):
     """Return a list of the first n primes.
 
@@ -27,6 +28,7 @@ print "The first", n, "primes are:", get_primes(n)
 
 ###############################################################################
 
+
 def find_functions(filename):
     fin = open(filename)
     fout = open('functions.txt', 'w')
@@ -35,6 +37,7 @@ def find_functions(filename):
             print >> fout, line.rstrip()
     fin.close()
     fout.close()
+
 
 def find_functions(filename):
     fd = open(filename)

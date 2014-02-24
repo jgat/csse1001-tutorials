@@ -5,12 +5,14 @@ def uniqify(items):
             result.append(x)
     return result
 
+
 def uniqify2(items):
     result = []
     for x in sorted(items):
         if result == [] or x != result[-1]:
             result.append(x)
     return result
+
 
 def uniqify3(items):
     return dict.fromkeys(items).keys()
@@ -24,10 +26,12 @@ import timeit
 
 # TODO: work in progress - calibrate parameters
 
+
 def test(function_name, size, repeat, number):
     stmt = "{0}(xrange({1}))".format(function_name, size)
     setup = "from __main__ import {0}".format(function_name)
-    return min(timeit.repeat(stmt, setup, repeat=repeat, number=number)) / number
+    return min(timeit.repeat(stmt, setup, repeat=repeat,
+                             number=number)) / number
 
 print test('uniqify', 5000, 10, 1)
 print test('uniqify', 10000, 10, 1)

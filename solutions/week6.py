@@ -11,6 +11,7 @@ SCORES = read_scores('../tasks/scrabble_scores.txt')
 import pprint
 pprint.pprint(SCORES)
 
+
 def get_score(word):
     score = 0
     for letter in word:
@@ -20,6 +21,7 @@ def get_score(word):
 print get_score('quack')
 
 ###############################################################################
+
 
 def read_config(filename):
     fd = open(filename, 'rU')
@@ -39,6 +41,7 @@ def read_config(filename):
 
 config = read_config('../tasks/config.txt')
 pprint.pprint(config)
+
 
 def get_value(config, name):
     a, b = name.split('.')
