@@ -7,27 +7,46 @@
 <body>
 <h1>Week 8 Tutorial: Inheritance</h1>
 
-<h2>Managing Employees</h2>
+<h2>Extending Students</h2>
 
-<p>In the previous two weeks we have learnt how to define a new class, as well
-as some general pointers on designing classes. We wrote a <tt><span class="builtin">Student</span></tt> class which defines methods for getting, among other things, pieces of
-information about that Student. </p>
+<p>
+In last week's tutorial, we wrote a <tt>Student</tt> class which aimed to
+store, retrieve, and perform computations on, information about a university
+student. The file <a href="week8_students.py">week8_students.py</a> contains a
+much simpler model of a student; it includes a name, student number, and a list
+of courses. Each course has an associated tuition fee.
+</p>
 
-<p>This model for a student can be adapted to modelling employees in a business.
-The file <a href="week8_employees.py">week8_employees.py</a> contains an
-<tt>Employee</tt>  class that implents some basic features that may be
-useful when modelling an employee.</p>
-<p>Your task is to write a <tt><span class="builtin">Manager</span></tt> class
-that inherits from <tt><span class="builtin">Employee</span></tt> that adds or
-changes the following pieces of functionality:</p>
+<p>
+We would like to extend this model to allow for students who live in college.
+In addition to paying tuition fees, college students must also pay an extra fee
+to live on campus.
+Write a class <tt>CollegeStudent</tt> which inherits from <tt>Student</tt>, and
+implement the following functionality:
+</p>
+
 <ul>
-    <li>Override the <tt><span class="builtin">get_vac_days</span></tt> method
-        so that the number of vacation days is 10</li>
-    <li>Create a <tt><span class="builtin">get_bonus</span></tt> method that
-        returns the manager's bonus</li>
-    <li>Override the <tt><span class="builtin">get_annual_pay</span></tt>
-        method so that it takes the manager's bonus into account</li>
+<li>The constructor should take an extra two arguments, the name of the
+    student's college (as a string), and their college fee (as an integer).</li>
+<li>Add a method <tt>get_college</tt> which returns the name of the student's
+    college.</li>
+<li>The <tt>calculate_fees</tt> method of a <tt>CollegeStudent</tt> should
+    return the sum of all their tuition fees, plus their college fee.</li>
 </ul>
+
+<p>The following shows an example of using this class:</p>
+
+<pre>
+<span class="prompt">&gt;&gt;&gt;</span> fred = CollegeStudent(<span class="string">"fred"</span>, 43214321, <span class="string">"St. Leo's"</span>, 18000)
+<span class="prompt">&gt;&gt;&gt;</span> fred.get_college()
+<span class="result">"St. Leo's"</span>
+<span class="prompt">&gt;&gt;&gt;</span> fred.calculate_fees()
+<span class="result">18000</span>
+<span class="prompt">&gt;&gt;&gt;</span> fred.enrol(<span class="string">'CSSE1001'</span>, 1000)
+<span class="prompt">&gt;&gt;&gt;</span> fred.enrol(<span class="string">'LAWS1000'</span>, 1300)
+<span class="prompt">&gt;&gt;&gt;</span> fred.calculate_fees()
+<span class="result">20300</span>
+</pre>
 
 <h2>Webcrawling</h2>
 
