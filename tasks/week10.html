@@ -105,12 +105,15 @@ of coordinates), so that the entire drawing can be remade from the list.
 </p>
 
 <p>
-Another way to do this is to delete and redraw just the preview line whenever
-the mouse moves. To do this, store the return value of the call to
+Another way to do this is to just change the coordinates of the preview line
+whenever the mouse moves. To do this, store the return value of the call to
 <tt>create_line</tt> which creates the preview line (this return value is an
-integer which the canvas uses to uniquely identify the line). Then, to "move"
-the preview line, call <tt>self._canvas.delete</tt> with the line's ID as the
-parameter, and redraw the line using <tt>create_line</tt>.
+integer which the canvas uses to uniquely identify the line). Then, to move
+the preview line, call the canvas'
+<a href="http://effbot.org/tkinterbook/canvas.htm#Tkinter.Canvas.coords-method">
+<tt>coords</tt></a> method: <tt>self._canvas.coords(ID, x1, y1, x2, y2)</tt>
+with the line's ID as the first parameter, and the new coordinates as the
+four remaining parameters.
 </p>
 
 <p>Depending on what information is stored in the class, you may need to modify

@@ -83,10 +83,9 @@ class DrawingApp(object):
         self._settings.set_position(e.x, e.y)
 
         # Delete and redraw the preview if it should be drawn.
-        self._canvas.delete(self._preview_line)
         if self._start is not None and self._settings.is_preview_on():
-                self._preview_line = self._canvas.create_line((self._start,
-                                                               (e.x, e.y)))
+                self._canvas.coords(self._preview_line, self._start[0],
+                                    self._start[1], e.x, e.y)
 
         # Alternative: delete everything and redraw_all
         # If the preview setting is off, it's possible that there are still
