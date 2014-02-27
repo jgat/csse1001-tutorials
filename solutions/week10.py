@@ -122,9 +122,8 @@ class DrawingApp(object):
             # self._lines.append((self._start, (e.x, e.y)))
             # self.redraw()
 
-            # Draw the line and remove the preview
-            self._canvas.delete(self._preview_line)
-            self._canvas.create_line(self._start, (e.x, e.y))
+            # Change the preview line so the current line is final.
+            self._preview_line = None
             self._start = None
 
     # This method is only necessary if using the "delete everything" strategy.
