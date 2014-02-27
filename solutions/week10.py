@@ -82,10 +82,20 @@ class DrawingApp(object):
         """
         self._settings.set_position(e.x, e.y)
 
-        # Delete and redraw the preview if it should be drawn.
+        # If a preview line needs to be updated/drawn...
         if self._start is not None and self._settings.is_preview_on():
+            if self._preview_line is not None:
+                # Change the coordinates of the preview.
                 self._canvas.coords(self._preview_line, self._start[0],
                                     self._start[1], e.x, e.y)
+            else:
+                # The user turned on preview while drawing a line
+                self._preview_line = self._canvas.create_line(self._start, e.x,
+                                                              e.y)
+        elif self._preview_line is not None:
+            # The user turned off preview while drawing a line
+            self._canvas.delete(self._preview_line)
+            self._preview_line = None
 
         # Alternative: delete everything and redraw_all
         # If the preview setting is off, it's possible that there are still
@@ -121,7 +131,9 @@ class DrawingApp(object):
             # self._lines.append((self._start, (e.x, e.y)))
             # self.redraw()
 
-            # Change the preview line so the current line is final.
+            # Draw the final line, and delete the preview if it was being drawn
+            self._canvas.create_line(self._start, e.x, e.y)
+            self._canvas.delete(self._preview_line)
             self._preview_line = None
             self._start = None
 
