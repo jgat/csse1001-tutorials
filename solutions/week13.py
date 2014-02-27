@@ -27,18 +27,6 @@ separate_pipe = separate('|')
 ###############################################################################
 
 
-def simon_says():
-    magic_word = "simon says "
-    while True:
-        cmd = raw_input("Command: ").lower()
-        if cmd == 'q':
-            break
-        if cmd.startswith(magic_word):
-            print "I will", cmd[len(magic_word):]
-        else:
-            print "I do nothing"
-
-
 def get_commands():
     while True:
         cmd = raw_input("Command: ").lower()
@@ -59,8 +47,8 @@ def simon_says2():
 
 
 def permutations(xs):
-    if len(xs) == 1:
-        yield xs
+    if not xs:
+        yield []
     else:
         for i, x in enumerate(xs):
             for subperm in permutations(xs[:i]+xs[i+1:]):
