@@ -24,7 +24,8 @@ layout:
 <center><img src="img/week9a.png" alt="" /></center>
 
 <p>
-Note that there should be a vertical padding of 10 pixels around the buttons.
+Note that there should be a vertical padding of 10 pixels around the buttons
+(so that the buttons do not touch the bottom of the window).
 If the user increases the window size, the buttons should stay at the bottom,
 and the label should stay rougly in the centre of the window.
 </p>
@@ -58,9 +59,12 @@ colour. Modify the program to show the following layout:
 <center><img src="img/week9c.png" alt="" /></center>
 
 <p>
-Note that the 10 pixel vertical padding has been removed from the two buttons,
-and there is a 10 pixel padding around all four sides of the bottom row. If the
-user increases the window size, the <tt>Entry</tt> widget should grow
+There should be a 10 pixel padding around all four sides of the bottom row, and
+the 10 pixel vertical padding on the middle row should be removed (otherwise,
+if there was 10 pixels of padding on both rows, it would look like a total gap
+of 20 pixels &ndash; the gap which appears in the screenshot is padding on top of
+the bottom row, not padding below the middle row).
+If the user increases the window size, the <tt>Entry</tt> widget should grow
 horizontally.
 </p>
 
@@ -95,7 +99,10 @@ First, import <tt>tkMessageBox</tt>, then
 will display an error box with the given title and message.
 </p>
 
-<p>If a colour is invalid, Python will raise a <tt>TclError</tt>.</p>
+<p>If a widget's <tt>config</tt> method is called with an invalid background
+colour, then it will raise a <tt>TclError</tt>. So, we can tell if a colour is
+valid by trying to configure the label, and checking if <tt>config</tt> raises
+this error.</p>
 </div>
 
 </body>

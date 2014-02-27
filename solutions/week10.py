@@ -74,20 +74,28 @@ class DrawingApp(object):
 
         self._canvas.bind('<Button-1>', self.evt_click)
         self._start = None
-        self._lines = []
+        # self._lines = []
+        self._preview_line = None
 
     def evt_motion(self, e):
         """Event handler for Mouse movement on the Canvas
         """
         self._settings.set_position(e.x, e.y)
 
-        # Draw the preview if it should be drawn.
+        # Delete and redraw the preview if it should be drawn.
+        self._canvas.delete(self._preview_line)
+        if self._start is not None and self._settings.is_preview_on():
+                self._preview_line = self._canvas.create_line((self._start,
+                                                               (e.x, e.y)))
+
+        # Alternative: delete everything and redraw_all
         # If the preview setting is off, it's possible that there are still
         # preview lines lingering around, so redraw everything anyway.
-        if self._start is not None:
-            self.redraw()
-            if self._settings.is_preview_on():
-                self._canvas.create_line(self._start, (e.x, e.y))
+
+        # if self._start is not None:
+        #    self.redraw()
+        #    if self._settings.is_preview_on():
+        #        self._canvas.create_line(self._start, (e.x, e.y))
 
     def exit(self):
         """Close the application.
@@ -99,18 +107,27 @@ class DrawingApp(object):
         """
         self._canvas.delete(ALL)
         self._start = None
-        self._lines = []
+        # self._lines = []
 
     def evt_click(self, e):
         """Event handler for clicking the canvas: Draw a line
         """
         if self._start is None:
             self._start = (e.x, e.y)
+            # Begin the preview line
+            if self._settings.is_preview_on():
+                self._preview_line = self._canvas.create_line(self._start,
+                                                              self._start)
         else:
-            self._lines.append((self._start, (e.x, e.y)))
-            self._start = None
-            self.redraw()
+            # self._lines.append((self._start, (e.x, e.y)))
+            # self.redraw()
 
+            # Draw the line and remove the preview
+            self._canvas.delete(self._preview_line)
+            self._canvas.create_line(self._start, (e.x, e.y))
+            self._start = None
+
+    # This method is only necessary if using the "delete everything" strategy.
     def redraw(self):
         """Remove all drawings and redraw all lines on the canvas.
         """

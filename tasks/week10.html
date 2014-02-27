@@ -36,9 +36,13 @@ Next, modify the <tt>SettingsFrame</tt> class so that, if the "Preview On"
 button is clicked, it will turn grey and change its text to "Preview Off" (as
 in the screenshot above), and if clicked again, it will go back to green with
 "Preview On".
+</p>
+<p>
 Also write the method <tt>is_preview_on</tt> to return
 <tt><span class="builtin">True</span></tt> or
-<tt><span class="builtin">False</span></tt> depending on the preview setting.
+<tt><span class="builtin">False</span></tt> depending on the preview setting
+(we will use this method later when we write the code which draws the preview
+lines).
 </p>
 
 <div class="important">
@@ -84,7 +88,9 @@ Use the Canvas' <tt>create_line</tt> method to draw a line, for instance
 <p>
 Modify the program so after the first click, the user will see a 'preview' of
 their line which follows the cursor, but only if the preview button is set to
-"On" (use the <tt>is_preview_on</tt> method).
+"On" (use the <tt>is_preview_on</tt> method that we wrote earlier to tell if
+the preview line should be drawn; recall that this method returns
+<tt><span class="builtin">True</span></tt> if the line should be drawn).
 </p>
 
 <div class="important">
@@ -98,9 +104,18 @@ information about all the lines in the application (for example, the two pairs
 of coordinates), so that the entire drawing can be remade from the list.
 </p>
 
+<p>
+Another way to do this is to delete and redraw just the preview line whenever
+the mouse moves. To do this, store the return value of the call to
+<tt>create_line</tt> which creates the preview line (this return value is an
+integer which the canvas uses to uniquely identify the line). Then, to "move"
+the preview line, call <tt>self._canvas.delete</tt> with the line's ID as the
+parameter, and redraw the line using <tt>create_line</tt>.
+</p>
+
 <p>Depending on what information is stored in the class, you may need to modify
 the <tt>clear</tt> method to reset this information (otherwise previously
-deleted drawings can reappear).</p>
+deleted lines might reappear).</p>
 </div>
 
 </body>
