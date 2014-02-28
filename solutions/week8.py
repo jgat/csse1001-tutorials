@@ -78,8 +78,7 @@ class LinkParser(HTMLParser):
 def find_links(url):
     """Return a list of links from the given webpage"""
     # Open the webpage and read the HTML text
-    #fd = urllib2.urlopen(url)
-    fd = open(url)    # tutors are allowed to be sneaky like this
+    fd = urllib2.urlopen(url)
     text = fd.read()
     fd.close()
 
@@ -91,8 +90,9 @@ def find_links(url):
 
 
 def task2():
+    URL = 'http://csse1001.uqcloud.net/csse1001/_tutorials/week8.html'
     # no one will suspect that I used pprint
-    pprint.pprint(find_links('../tasks/week8.html'))
+    pprint.pprint(find_links(URL))
 
 if __name__ == '__main__':
     task1()
