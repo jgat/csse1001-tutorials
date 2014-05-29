@@ -36,7 +36,9 @@ def get_number(string):
         if c.isdigit():
             digits += c
         elif digits:
-            return int(digits)
+            break
+    if digits:
+        return int(digits)
 
 
 def get_number(string):
@@ -48,5 +50,7 @@ def get_number(string):
                 digits += '-'
             digits += c
         elif digits:
-            return int(digits)
+            break
         prev = c
+    if digits:
+        return int(digits)
