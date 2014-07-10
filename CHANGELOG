@@ -1,0 +1,53 @@
+Version 1.1
+-----------
+
+Week 2:
+* Added a super-challenge task.
+* Renamed "Extension" task to "Challenge" task for consistency.
+
+Week 3:
+* Made the spiral task a "Challenge", since it's hard to complete all five
+  tasks within the hour.
+* Changed the `polygon` example to 7 sides, to catch students who do integer
+  division (360/n).
+* Added hints and tips to avoid common technical/implementation problems.
+
+Week 4:
+* Fixed a bug in the solutions (get_number) for when the number is at the end
+  of the line.
+* Changed one of the examples for get_number, since 'l' looks like '1'.
+* Changed the "Extension" task to "Challenge" for consistency.
+
+Week 6:
+* Changed the get_score signature to include the scores dictionary.
+* Fixed a typo in the sample usage for read_config.
+
+Week 7:
+* Changed the "Extension" task to "Challenge" for consistency.
+
+Week 8:
+* Fixed the solution to refer to the published task statement on course
+  website, instead of referring to the copy in this repository.
+
+Week 10:
+* Fixed an error in the SettingsFrame docstring, left over from an early draft.
+
+Week 11:
+* Added a brief review and example of a recursive function at the beginning.
+* Added alternative solutions to the minimum problem.
+* Added a challenge task.
+
+Week 12:
+* Changed the time testing code to test different values of N, and to also test
+  the worst case. Also made this change in the tutor solutions (with a little
+  bit more code to extrapolate the N = 10**6 case).
+
+Week 13:
+* Turned the "Simon Says" task into a Challenge task.
+
+
+Version 1.0
+-----------
+Feb 28, 2014
+
+Initial set of tasks, as used in 2014 Semester 1

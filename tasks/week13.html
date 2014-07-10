@@ -111,85 +111,34 @@ Use a lambda expression in the return value.
 <p>Finally, rewrite the original three <tt>separate_*</tt> functions using
 <tt>separate</tt>, and check they work as expected.</p>
 
-<h2>Simon Says</h2>
+<h2>Past Exam Practice</h2>
+
+<p>
+Attempt some of the past exam questions, accessible from the UQ Library
+website. The tutors will sugggest questions to attempt.
+</p>
+
+
+<div class="extra">
+<b>Challenge 1: Permutations</b>
+
+<p>A permutation of a list is a re-ordering of elements in the list. For example,
+the permutations of <tt>[1, 2, 5]</tt> are <tt>[1, 2, 5]</tt>, <tt>[1, 5, 2]</tt>,
+<tt>[2, 1, 5]</tt>, <tt>[2, 5, 1]</tt>, <tt>[5, 1, 2]</tt>, and <tt>[5, 2, 1]</tt>.
+</p>
+
+<p>Write a generator function <tt>permutations</tt> which takes a list, and yields
+all permutations of the list. Hint: use recursion.</p>
+
+<p>Discuss why it is advantageous to use a generator in this exercise, instead
+of returning a list of permutations.</p>
+</div>
+
+
+<div class="extra">
+<b>Challenge 2: Simon Says</b>
 
 <p>This exercise is on generators.</p>
-
-<div class="important">
-<b>Review: Generators</b>
-
-<p>A normal function runs all of its code from beginning to end, and finishes
-by returning a value. A generator instead allows us to instead run part of its
-code, <em>yield</em> a value back to the caller, then later be resumed when it
-is required. By yielding a new value each time it's resumed, it will generate
-a sequence of values (which might even be infinitely long).</p>
-
-<p>Since a generator acts as a sequence, it can be looped over using a for-loop,
-or by any other method which uses an iterable (e.g.
-<tt><span class="builtin">enumerate</span></tt> or
-<tt><span class="builtin">str</span>.join</tt>). The following example shows
-how the program flows back and forth between the main function and the
-generator.</p>
-
-<pre>
-<span class="keyword">def</span> <span class="classordef">generator</span>():
-    <span class="keyword">print</span> <span class="string">"generator: begin"</span>
-   <span class="keyword"> for </span>i<span class="keyword"> in </span><span class="builtin">range</span>(3):
-        <span class="keyword">print</span> <span class="string">"generator: about to yield"</span>, i
-        <span class="keyword">yield</span> i
-        <span class="keyword">print</span> <span class="string">"generator: resumed. i ="</span>, i
-    <span class="keyword">print</span> <span class="string">"generator: end"</span>
-
-<span class="keyword">def</span> <span class="classordef">main</span>():
-    <span class="keyword">print</span> <span class="string">"main:      begin"</span>
-    g = generator()
-    <span class="keyword">print</span> <span class="string">"main:      about to enter loop"</span>
-   <span class="keyword"> for </span>value<span class="keyword"> in </span>g:
-        <span class="keyword">print</span> <span class="string">"main:      inside loop. value ="</span>, value
-    <span class="keyword">print</span> <span class="string">"main:      end"</span>
-
-
-<span class="prompt">&gt;&gt;&gt;</span> main()
-<span class="result">main:      begin
-main:      about to enter loop
-generator: begin
-generator: about to yield 0
-main:      inside loop. value = 0
-generator: resumed. i = 0
-generator: about to yield 1
-main:      inside loop. value = 1
-generator: resumed. i = 1
-generator: about to yield 2
-main:      inside loop. value = 2
-generator: resumed. i = 2
-generator: end
-main:      end</span>
-<!--
-
-<span class="prompt">&gt;&gt;&gt;</span> g = generator()
-<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
-<span class="result">generator: begin
-generator: about to yield 0</span>
-<span class="prompt">&gt;&gt;&gt;</span> value
-<span class="result">0</span>
-<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
-<span class="result">generator: resumed. i = 0
-generator: about to yield 1</span>
-<span class="prompt">&gt;&gt;&gt;</span> value
-<span class="result">1</span>
-<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
-<span class="result">generator: resumed. i = 1
-generator: about to yield 2</span>
-<span class="prompt">&gt;&gt;&gt;</span> value
-<span class="result">2</span>
-<span class="prompt">&gt;&gt;&gt;</span> value = <span class="builtin">next</span>(g)
-<span class="result">generator: resumed. i = 2
-generator: end</span>
-<span class="error">Traceback (most recent call last):
-  File "&lt;input&gt;", line 1, in &lt;module&gt;
-StopIteration</span>--></pre>
-
-</div>
 
 <p>Recall that the <tt><span class="builtin">raw_input</span></tt> function
 can be used inside a <tt><span class="keyword">while</span></tt> loop to get
@@ -248,27 +197,6 @@ StopIteration</span>
 
 <p>Then, rewrite the function <tt>simon_says</tt> using <tt>get_commands</tt>,
 and check that it works.</p>
-
-<h2>Past Exam Practice</h2>
-
-<p>
-Attempt some of the past exam questions, accessible from the UQ Library
-website. The tutors will sugggest questions to attempt.
-</p>
-
-<div class="extra">
-<b>Challenge Task: Permutations</b>
-
-<p>A permutation of a list is a re-ordering of elements in the list. For example,
-the permutations of <tt>[1, 2, 5]</tt> are <tt>[1, 2, 5]</tt>, <tt>[1, 5, 2]</tt>,
-<tt>[2, 1, 5]</tt>, <tt>[2, 5, 1]</tt>, <tt>[5, 1, 2]</tt>, and <tt>[5, 2, 1]</tt>.
-</p>
-
-<p>Write a generator function <tt>permutations</tt> which takes a list, and yields
-all permutations of the list. Hint: use recursion.</p>
-
-<p>Discuss why it is advantageous to use a generator in this exercise, instead
-of returning a list of permutations.</p>
 </div>
 
 </html>

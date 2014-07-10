@@ -34,12 +34,14 @@ maps a scrabble score to the letter which gains that score?</p>
 </li>
 
 <li>
-<p>Write a function <tt>get_score(word)</tt>, that takes a string as input
-and returns the word's scrabble score. (You may assume that the input only
-consists of lowercase letters).</p>
+<p>Write a function <tt>get_score(scores, word)</tt>, that takes as input the
+scores dictionary and a string containing a word,
+and returns the word's scrabble score. (You may assume that the input string
+only consists of lowercase letters.) For example:</p>
 
 <pre>
-<span class="prompt">&gt;&gt;&gt;</span> get_score(<span class="string">'quack'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> scores = read_scores(<span class="string">'scrabble_scores.txt'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> get_score(scores, <span class="string">'quack'</span>)
 <span class="result">20</span>
 </pre>
 </li>
@@ -97,7 +99,7 @@ are valid.
 </p>
 
 <pre>
-<span class="prompt">&gt;&gt;&gt;</span> config = get_config(<span class="string">'config.txt'</span>)
+<span class="prompt">&gt;&gt;&gt;</span> config = read_config(<span class="string">'config.txt'</span>)
 <span class="prompt">&gt;&gt;&gt;</span> get_value(config, <span class="string">'user.mobile'</span>)
 <span class="result">'0412345678'</span>
 <span class="prompt">&gt;&gt;&gt;</span> get_value(config, <span class="string">'notifications.email'</span>)

@@ -12,9 +12,9 @@
 <p>
 In this task, we will use the <tt>turtle</tt> graphics module for drawing
 basic shapes, by moving a 'turtle' across the screen, drawing a path as it
-travels. Create a source file with
-the line <tt><span class="keyword">import</span> turtle</tt>. The turtle module
-contains many functions, we will use the following:
+travels. We can use the turtle functionality if we put the line
+<tt><span class="keyword">import</span> turtle</tt> at the top of our file.
+The turtle module contains many functions, we will use the following:
 </p>
 
 <ul>
@@ -37,46 +37,75 @@ For example, the following code produces the image below.
 </p>
 
 <pre>
-turtle.forward(100)
-turtle.left(120)
-turtle.forward(80)
-turtle.right(90)
-turtle.forward(80)
+<span class="keyword">import</span> turtle
+
+<span class="keyword">def</span> <span class="classordef">demo</span>():
+    turtle.forward(100)
+    turtle.left(120)
+    turtle.forward(80)
+    turtle.right(90)
+    turtle.forward(80)
+    turtle.exitonclick()
+
+demo()
 </pre>
 
 <center><img src="img/turtle_example.png" alt="" /></center>
 
 <p>
-Write the following functions:
+Create a file which contains the following functions.
+<b><u>NOTE:</u></b>
 </p>
+<ul>
+<li>Put the line <tt><span class="keyword">import</span> turtle</tt> at the top
+of your code.</li>
+<li>Do NOT save your file as <tt>turtle.py</tt>, this will cause the import to
+fail. Choose a different file name, but make sure you add the <tt>.py</tt>.</li>
+<li>Put the line <tt>turtle.exitonclick()</tt> at the end of each function
+definition (otherwise, the turtle window will crash when running in IDLE).
+</li>
+</ul>
 
 <ol>
-<li><tt>rectangle(a, b)</tt>, which draws a rectangle with the given side
-lengths. Ensure that the cursor finishes pointing east.
+<li><p><tt>rectangle(a, b)</tt>, which draws a rectangle with the given side
+lengths. Ensure that the cursor finishes pointing east.</p>
 <center><img src="img/turtle_rectangle.png" alt="" /></center>
 </li>
-<li><tt>rotated_rectangle(a, b, angle)</tt>, which draws a rectangle rotated
+<li><p><tt>rotated_rectangle(a, b, angle)</tt>, which draws a rectangle rotated
 anticlockwise by the given angle. Ensure that the cursor finishes pointing east.
+</p>
 <center><img src="img/turtle_rotated_rectangle.png" alt="" /></center>
+<p><b>Hint:</b> This can be done in only five lines of code, including the
+"<tt><span class="keyword">def</span> ...</tt>"
+and "<tt>turtle.exitonclick()</tt>" lines.</p>
 </li>
-<li><tt>polygon(size, n)</tt>, which draws a regular polygon with <tt>n</tt>
-sides, and side length <img src="img/size_eqn.png" alt="size * sin(pi / n)" />.
-(Hint: if the turtle moves anti-clockwise, it will turn a total of 360&deg;, in
-<tt>n</tt> equal movements. The <tt>math</tt> module contains trigonometric
-functions and mathematical constants.)
+<li>
+<p><tt>polygon(size, n)</tt>, which draws a regular polygon with <tt>n</tt>
+sides, and side length <img src="img/size_eqn.png" alt="size * sin(pi / n)" />.</p>
 <center><img src="img/turtle_polygon.png" alt="" /></center>
+<p>
+<b>Hint:</b> If the turtle moves anti-clockwise, it will turn a total of 360&deg;, in
+<tt>n</tt> equal movements. The <tt>math</tt> module contains trigonometric
+functions and mathematical constants. Remember to
+<tt><span class="keyword">import</span> math</tt>.
+</p>
 </li>
-<li><tt>spiral(n)</tt>, which draws a square spiral with <tt>n</tt> lines.
-(Hint: the lines in the spiral have lengths 20, 20, 40, 40, 60, 60, &hellip;).
-The example below shows a spiral of 20 lines which makes five full revolutions.
-<center><img src="img/turtle_spiral.png" alt="" /></center>
-</li>
-<li><tt>interact()</tt>, which first asks the user for a distance, then
+<li><p><tt>interact()</tt>, which first asks the user for a distance, then
 repeatedly asks for a direction to move, from the options
 <tt>n</tt>/<tt>s</tt>/<tt>e</tt>/<tt>w</tt> (north/south/east/west
 respectively), and then moves in that direction by the given distance. If the
 user enters <tt>q</tt>, the turtle window closes and the function ends. If the
-user enters any other input, an error message is printed, as in the example.
+user enters any other input, an error message is printed, as in the example.</p>
 <center><img src="img/turtle_interact.png" alt="" /></center>
 </li>
 </ol>
+
+<div class="extra">
+<b>Challenge: Square Spirals</b>
+
+<p>Write a function <tt>spiral(n)</tt>, which draws a square spiral with <tt>n</tt>
+lines, which have length 20, 20, 40, 40, 60, 60, &hellip;.
+The example below shows a spiral of 20 lines which makes five full revolutions.
+</p>
+</div>
+<center><img src="img/turtle_spiral.png" alt="" /></center>

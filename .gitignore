@@ -1,5 +1,9 @@
 *.py[cod]
 
+# TeX
+*.aux
+*.log
+
 # C extensions
 *.so
 

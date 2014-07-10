@@ -4,8 +4,7 @@ from Tkinter import *
 class SettingsFrame(Frame):
     """A frame which allows users to change settings of the application
 
-    Settings to change include line width (thickness), and whether or not a
-    line preview is shown.
+    Settings to change are: whether or not a line preview is shown.
     """
     def __init__(self, parent):
         """Initialise the widget, with its subwidgets

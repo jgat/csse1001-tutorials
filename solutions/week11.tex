@@ -1,0 +1,86 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[top=2.5cm,bottom=2.5cm,left=2.5cm,right=2.5cm]{geometry}
+
+\usepackage{amsthm}
+
+\begin{document}
+
+\begin{center}
+\bf CSSE1001 Week 11 Challenge Task | Solutions
+\end{center}
+
+\begin{enumerate}
+\item
+Consider when {\tt len(xs) == 1}, for example, {\tt xs == [3]}. Then we will
+have {\tt mid = 0}, and then {\tt return add2([]) + add2([3])}. This leads to
+infinite computation, repeatedly calling {\tt add2([3])}. It can also be shown
+that for {\tt len(xs) >= 2}, we eventually arrive at the same problem.
+
+The modified solution is:
+\begin{verbatim}
+def add(xs):
+    if xs == []:
+        return 0
+    elif len(xs) == 1:
+        return xs[0]
+    else:
+        mid = len(xs) / 2
+        return add(xs[:mid]) + add(xs[mid:])
+\end{verbatim}
+
+\item
+Claim: {\tt add(xs)} will always return the sum of {\tt xs}.
+
+\begin{proof}
+Let $x_i$ denote {\tt xs[i]}, and let $n = {\tt len(xs)}$.
+We must prove that {\tt add(xs)} will always return $\sum_{i=0}^{n-1} x_i$.
+We proceed by induction on $n$:
+
+If $n = 0$, the {\tt add(xs)} immediately returns $0 = \sum_{i=0}^{-1} x_i$,
+as required.
+
+Now, for $n \geq 1$, assume that the result holds for lists of length $n-1$.
+Since {\tt len(xs[1:])} $ = n-1$, we have that {\tt add(xs[1:])}
+$= \sum_{i=1}^{n-1} x_i$. Then, {\tt add(xs)} returns {\tt xs[0] + add(xs[1:])},
+which is
+\[
+    {\tt add(xs)} = x_0 + \sum_{i=1}^{n-1} x_i = \sum_{i=0}^{n-1} x_i,
+\]
+as required. By induction, the result holds for any list {\tt xs} of any length
+$n \geq 0$.
+\end{proof}
+
+\item
+Claim: {\tt add2(xs)} will always return the sum of {\tt xs}.
+
+\begin{proof}
+Let $x_i$ denote {\tt xs[i]}, and let $n = {\tt len(xs)}$.
+We must prove that {\tt add2(xs)} will always return $\sum_{i=0}^{n-1} x_i$.
+We proceed by strong induction on $n$:
+
+If $n = 0$ or $n = 1$, the {\tt add(xs)} immediately returns the correct result.
+
+Now, assume that for some $n \geq 2$, the result holds for all $0 \leq k < n$.
+Then, if we let $m = \lfloor \frac{n}{2} \rfloor$, we have that $1 \leq m < n$.
+Therefore, {\tt len(xs[:mid])} $ = m < n$ and {\tt len(xs[mid:])}
+$ = n - m < n$, so by assumption, {\tt add2(xs[:mid])} $ = \sum_{i=0}^{m-1} x_i$,
+and {\tt add2(xs[mid:])} $ = \sum_{i=m}^{n-1} x_i$.
+
+Then, {\tt add2(xs)} returns {\tt add2(xs[:mid]) + add2(xs[mid:])}, which is
+\[
+    {\tt add2(xs)} = \sum_{i=0}^{m-1} x_i + \sum_{i=m}^{n-1} x_i = \sum_{i=0}^{n-1} x_i,
+\]
+as required. By induction, the result holds for any list {\tt xs} of any length
+$n \geq 0$.
+\end{proof}
+
+Without the {\tt elif len(xs) == 1} clause in the definition of {\tt add2}, the
+inductive case of the above proof would have to cover $n \geq 1$ instead of
+$n \geq 2$. For $n = 1$ however, we do not have $1 \leq m$, so we cannot
+guarantee that {\tt len(xs[mid:])} $< n$, and so we cannot apply the inductive
+hypothesis to {\tt add(xs[mid:])}.
+\end{enumerate}
+
+
+\end{document}

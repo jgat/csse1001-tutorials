@@ -7,6 +7,35 @@
 <body>
 <h1>Week 11 Tutorial: Recursion</h1>
 
+
+<div class="important">
+<b>Review: Recursion</b>
+
+<p>A recursive function is one which makes a call to itself in its body, with a
+different input. That inner function call might then call itself again, with a
+third input. This repeats until no self-calls are made; this is known as a
+<em>base case</em> (without a base case, the function will call itself
+endlessly).</p>
+
+<p>A recursive function on a list will often use a small list (length 0 or 1)
+as a base case, and the recursive case will often call itself with a list slice
+that excludes one element (but not always). For example, the following function
+computes the sum of a list of numbers:</p>
+
+<pre>
+<span class="keyword">def</span> <span class="classordef">add</span>(xs):
+   <span class="keyword"> if </span>xs == []:
+        <span class="keyword">return</span> 0
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> xs[0] + add(xs[1:])
+</pre>
+
+<p>In the recursive case of this function, the <tt>add</tt> function calls
+itself with element 0 excluded (<tt>xs[1:]</tt>). It then combines the result
+of the recursive call with the excluded element (<tt>xs[0]</tt>).
+</p>
+</div>
+
 <h2>Minimums</h2>
 
 <p>
@@ -30,6 +59,7 @@ For this task, write a function
 returns a list of all filenames that can be accessed from that directory</b>
 (i.e. all the files in that directory, and its sub-directories, and its
 sub-sub-directories, and so on).
+Identify the base case of your function.
 </p>
 
 <p>An example of using this function follows (obviously, the output will
@@ -99,5 +129,39 @@ It may help to use the <tt>list.extend</tt> method; if <tt>a</tt> and
 Attempt some of the past exam questions, accessible from the UQ Library
 website. The tutors will sugggest questions to attempt.
 </p>
+
+<div class="extra">
+<b>Challenge: Prove it!</b>
+
+<ol>
+<li>
+<p>The following function aims to find the sum of a list, but it does not
+always work. Determine why, and modify the function definition to fix this
+error.</p>
+
+<pre>
+<span class="keyword">def</span> <span class="classordef">add2</span>(xs):
+   <span class="keyword"> if </span>xs == []:
+        <span class="keyword">return</span> 0
+    <span class="keyword">else</span>:
+        mid = <span class="builtin">len</span>(xs) / 2
+        <span class="keyword">return</span> add2(xs[:mid]) + add2(xs[mid:])
+</pre>
+</li>
+
+<li>
+<p>See the <tt>add</tt> function defined in the Review section above.
+Use mathematical induction to prove that this function always returns the
+correct value (the sum of <tt>xs</tt>).</p>
+</li>
+
+<li>
+<p>Use strong mathematical induction to prove that your modified <tt>add2</tt>
+function always returns the correct value. Identify where the proof fails for
+the original <tt>add2</tt> function.</p>
+</li>
+</ol>
+
+</div>
 
 </html>

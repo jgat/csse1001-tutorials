@@ -1,3 +1,5 @@
+# Three different solutions are presented
+
 def minimum(xs):
     if not xs:
         raise ValueError("Empty list does not have a smallest element.")
@@ -5,6 +7,29 @@ def minimum(xs):
         return xs[0]
     else:
         return min(xs[0], minimum(xs[1:]))
+
+
+def minimum(xs):
+    if not xs: raise ValueError()
+    if len(xs) == 1: return xs[0]
+
+    # len(xs) >= 2
+    if xs[0] > xs[1]:
+        return minimum(xs[:1] + xs[2:])
+    else:
+        return minimum(xs[1:])
+
+
+def minimum(xs):
+    # Note - the depth of the recursion tree is logarithmic, but the complexity
+    #        is still linear in the length of the list.
+    if not xs: raise ValueError()
+    if len(xs) == 1: return xs[0]
+
+    # len(xs) >= 2  ensures that  xs[:mid] != [] and xs[mid:] != []
+    mid = len(xs) / 2
+    return min( minimum(xs[:mid]), minimum(xs[mid:]) )
+
 
 ###############################################################################
 

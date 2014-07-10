@@ -11,12 +11,14 @@ def rectangle(a, b):
     turtle.left(90)
     turtle.forward(b)
     turtle.left(90)
+    turtle.exitonclick()
 
 
 def rotated_rectangle(a, b, angle):
     turtle.left(angle)
     rectangle(a, b)
     turtle.right(angle)
+    turtle.exitonclick()
 
 
 def polygon(size, n):
@@ -26,14 +28,7 @@ def polygon(size, n):
         turtle.forward(side)
         turtle.left(360. / n)
         i += 1
-
-
-def spiral(sides):
-    i = 0
-    while i < sides:
-        turtle.forward(20 * (i / 2 + 1))
-        turtle.left(90)
-        i += 1
+    turtle.exitonclick()
 
 
 def interact():
@@ -56,3 +51,13 @@ def interact():
             print "That's not a direction"
             continue
         turtle.forward(distance)
+    turtle.exitonclick()
+
+
+def spiral(sides):
+    i = 0
+    while i < sides:
+        turtle.forward(20 * (i / 2 + 1))
+        turtle.left(90)
+        i += 1
+    turtle.exitonclick()

@@ -16,30 +16,34 @@ def uniqify2(items):
 
 def uniqify3(items):
     d = {}
-    for x in xs:
+    for x in items:
         d[x] = None
     return d.keys()
 
     ## This can be done in one line:
     # return dict.fromkeys(items).keys()
 
-
 if __name__ == '__main__':
     #print uniqify([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
     #print uniqify2([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
     #print uniqify3([8, 3, 5, 8, 9, 4, 2, 5, 3, 5])
 
-    # Run this at the beginning of the tutorial hour.
-    # The N = 10**6 case will not finish in time
+    # Be aware: this can take 5-10 minutes to run.
 
-    import random
-    import timeit
+    import random, timeit, math
 
-    for N in [1000, 10000, 100000, 1000000]:
-        items = [random.randint(0,N) for i in xrange(N)]
-        print "n =", N
-        print "uniqify3:", min(timeit.repeat('uniqify3(items)', 'from __main__ import uniqify3, items', number=100))/100, 'seconds'
-        print "uniqify2:", min(timeit.repeat('uniqify2(items)', 'from __main__ import uniqify2, items', number=100))/100, 'seconds'
-        print "uniqify:", min(timeit.repeat('uniqify(items)', 'from __main__ import uniqify, items', number=1)), 'seconds'
-        print
+    FUNCTIONS = [('uniqify3', 1000, lambda n: n),
+                 ('uniqify2', 1000, lambda n: n * math.log(n, 2)),
+                 ('uniqify', 1, lambda n: n ** 2)]
+    for func, number, order in FUNCTIONS:
+        print '\n' + func + ':'
+        old = None
+        for N in [1000, 2000, 4000, 8000, 16000, 32000, 64000]:
+            time = min(timeit.repeat(func+'(range(N))', 'from __main__ import N,'+func, number=number))*1000/number
+            print ('n = {:>5}: {:.4f} ms'.format(N, time) +
+                   ('' if old is None else '   = {:.2f} times slower'.format(time/old)))
+            old = time
 
+        print "Extrapolating:"
+        bigN = 10**6
+        print "n = {:,>5}: {:.2f} seconds".format(bigN, time * order(bigN) / order(N) / 1000)

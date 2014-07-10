@@ -6,19 +6,19 @@ def read_scores(filename):
         scores[letter] = int(score)
     return scores
 
+
+def get_score(scores, word):
+    score = 0
+    for letter in word:
+        score += scores[letter]
+    return score
+
 SCORES = read_scores('../tasks/scrabble_scores.txt')
 
 import pprint
 pprint.pprint(SCORES)
 
-
-def get_score(word):
-    score = 0
-    for letter in word:
-        score += SCORES[letter]
-    return score
-
-print get_score('quack')
+print get_score(SCORES, 'quack')
 
 ###############################################################################
 

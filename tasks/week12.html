@@ -86,11 +86,14 @@ waiting.
 <span class="keyword">import</span> random
 <span class="keyword">import</span> timeit
 
-N = 100000
-items = [random.randint(0,N)<span class="keyword"> for </span>i<span class="keyword"> in </span><span class="builtin">xrange</span>(N)]
-<span class="keyword">print</span> <span class="string">"uniqify3:"</span>, min(timeit.repeat(<span class="string">'uniqify3(items)'</span>, <span class="string">'from __main__ import uniqify3, items'</span>, number=100))/100, <span class="string">'seconds'</span>
-<span class="keyword">print</span> <span class="string">"uniqify2:"</span>, min(timeit.repeat(<span class="string">'uniqify2(items)'</span>, <span class="string">'from __main__ import uniqify2, items'</span>, number=100))/100, <span class="string">'seconds'</span>
-<span class="keyword">print</span> <span class="string">"uniqify:"</span>, min(timeit.repeat(<span class="string">'uniqify(items)'</span>, <span class="string">'from __main__ import uniqify, items'</span>, number=1)), <span class="string">'seconds'</span>
+<span class="keyword">for </span>func, number<span class="keyword"> in </span>[(<span class="string">'uniqify3'</span>, 1000), (<span class="string">'uniqify2'</span>, 1000), (<span class="string">'uniqify'</span>, 1)]:
+    <span class="builtin">print</span> <span class="string">'\n'</span> + func + <span class="string">':'</span>
+    old = <span class="builtin">None</span>
+   <span class="keyword"> for </span>N<span class="keyword"> in </span>[1000, 2000, 4000, 8000, 16000, 32000, 64000]:
+        time = <span class="builtin">min</span>(timeit.repeat(func+<span class="string">'(range(N))'</span>, <span class="string">'from __main__ import N,'</span>+func, number=number))*1000/number
+        <span class="builtin">print</span> (<span class="string">'n = {:&gt;5}: {:.4f} ms'</span>.format(N, time) +
+               (<span class="string">''</span><span class="keyword"> if </span>old<span class="keyword"> is </span><span class="builtin">None</span> <span class="keyword">else</span> <span class="string">'   = {:.2f} times slower'</span>.format(time/old)))
+        old = time
 </pre>
 
 <div class="aside">
