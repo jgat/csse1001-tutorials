@@ -1,53 +1,116 @@
 class Student(object):
     """A university student"""
-    def __init__(self, name, no, degree):
+    def __init__(self, name, student_no, degree):
         """Create a student with a name.
 
         Constructor: Student(str)
         """
         self._name = name
-        self._no = no
+        # We need to store the values on this instance otherwise they will
+        # get "forgotten" once the init methods is done.
+        self._no = student_no
         self._degree = degree
         self._grades = {}
 
     def get_name(self):
+        """
+        Returns the name of this Student.
+
+        get_name() -> str
+        """
         return self._name
 
     def get_student_no(self):
+        """
+        Returns the student number of this Student.
+
+        get_student_no() -> int
+        """
         return self._no
 
     def get_degree(self):
+        """
+        Returns the degree of this Student.
+
+        get_degree() -> str
+        """
         return self._degree
 
     def set_degree(self, degree):
+        """
+        Sets the degree of this Student.
+
+        set_degree(str) -> None
+        """
         self._degree = degree
 
     def get_first_name(self):
+        """
+        Returns the first name of this Student.
+
+        get_first_name() -> str
+        """
         return self._name.split()[0]
 
     def get_last_name(self):
+        """
+        Returns the last name of this Student.
+
+        get_last_name() -> str
+        """
         return self._name.split()[1]
 
     def get_email(self):
+        """
+        Returns the email address of this Student.
+
+        get_email() -> str
+        """
         return '{0}.{1}@uq.net.au'.format(self.get_first_name().lower(),
                                           self.get_last_name().lower())
 
     def __str__(self):
+        """
+        Returns a textual representation of this Student.
+
+        __str__() -> str
+        """
         return '{0} ({1}, {2}, {3})'.format(self._name, self.get_email(),
                                             self._no, self._degree)
 
     def __repr__(self):
+        """
+        Returns a technical representation of this Student.
+
+        __repr__() -> str
+        """
         return 'Student({0!r}, {1!r}, {2!r})'.format(self._name, self._no,
                                                      self._degree)
 
     def add_grade(self, course, grade):
+        """
+        Adds a grade for the given course to this Student.
+
+        add_grade(str, int) -> None
+        """
         self._grades[course] = grade
 
     def gpa(self):
+        """
+        Calculates the GPA of this Student.
+
+        gpa() -> float
+        """
         if not self._grades:
             return 0.0
         else:
             return float(sum(self._grades.values())) / len(self._grades)
+            # To get a decimal value, we need to convert one of the operands
+            # to a float first, not just the result of the division.
+            # I.e. the following would not give the correct answer if the
+            # expected gpa has a non-zero decimal component.
+            # return float( sum(self._grades.values()) / len(self._grades) )
+            # The position of the brackets matters!
 
 s = Student('Michael Palin', 43215678, 'BInfTech')
 print "Name:   ", s.get_name()
@@ -62,8 +125,9 @@ print "Email:  ", s.get_email()
 print "str:    ", str(s)
 print "repr:   ", repr(s)
 
-###############################################################################
-
+#############################################################################
+# Following is some code to check that the Student class generally works
+# as expected.
 
 def check_students(students):
     seen = []
